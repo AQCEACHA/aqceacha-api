@@ -22,7 +22,6 @@ public class Cliente {
     private String senhacli;
     private String apelidocli;
     private Date nascimentocli;
-    private String generocli;
     private String telefonecli;
     private String enderecocli;
     private String complementocli;
@@ -99,14 +98,6 @@ public class Cliente {
 
     public void setNascimentocli(Date nascimentocli) {
         this.nascimentocli = nascimentocli;
-    }
-
-    public String getGenerocli() {
-        return generocli;
-    }
-
-    public void setGenerocli(String generocli) {
-        this.generocli = generocli;
     }
 
     public String getTelefonecli() {

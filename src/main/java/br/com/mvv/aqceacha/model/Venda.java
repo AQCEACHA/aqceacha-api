@@ -20,6 +20,7 @@ public class Venda {
     private long idvenda;
     private Date datavenda;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "venda")
     private List<Venda> venda = new ArrayList<>();
@@ -32,12 +33,21 @@ public class Venda {
     @JoinColumn(name = "idven")
     private Vendedor vendedor;
 
+
     public long getIdvenda() {
         return idvenda;
     }
 
     public void setIdvenda(long idvenda) {
         this.idvenda = idvenda;
+    }
+
+    public Date getDatavenda() {
+        return datavenda;
+    }
+
+    public void setDatavenda(Date datavenda) {
+        this.datavenda = datavenda;
     }
 
     public List<Venda> getVenda() {
@@ -62,14 +72,6 @@ public class Venda {
 
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
-    }
-
-    public Date getDatavenda() {
-        return datavenda;
-    }
-
-    public void setDatavenda(Date datavenda) {
-        this.datavenda = datavenda;
     }
 
     @Override

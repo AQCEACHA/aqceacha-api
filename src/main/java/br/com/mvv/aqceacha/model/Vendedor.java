@@ -19,16 +19,18 @@ public class Vendedor {
     @GeneratedValue(strategy = IDENTITY)
     private long idven;
     private String nomeven;
+    private String imgven;
+    private String publiimg;
     private String emailven;
     private String senhaven;
     private String apelidoven;
     private Date nascimentoven;
-    private String generoven;
     private String telefoneven;
     private String enderecoven;
     private String complementoven;
     private String documentoven;
-    private String comprovven;
+    private String cnpj;
+    private Double precovenda;
 
     @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
@@ -54,8 +56,24 @@ public class Vendedor {
         return nomeven;
     }
 
-    public void setNomeven(String nameven) {
-        this.nomeven = nameven;
+    public void setNomeven(String nomeven) {
+        this.nomeven = nomeven;
+    }
+
+    public String getImgven() {
+        return imgven;
+    }
+
+    public void setImgven(String imgven) {
+        this.imgven = imgven;
+    }
+
+    public String getPubliimg() {
+        return publiimg;
+    }
+
+    public void setPubliimg(String publiimg) {
+        this.publiimg = publiimg;
     }
 
     public String getEmailven() {
@@ -90,14 +108,6 @@ public class Vendedor {
         this.nascimentoven = nascimentoven;
     }
 
-    public String getGeneroven() {
-        return generoven;
-    }
-
-    public void setGeneroven(String generoven) {
-        this.generoven = generoven;
-    }
-
     public String getTelefoneven() {
         return telefoneven;
     }
@@ -130,12 +140,20 @@ public class Vendedor {
         this.documentoven = documentoven;
     }
 
-    public String getComprovven() {
-        return comprovven;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setComprovven(String comprovven) {
-        this.comprovven = comprovven;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public Double getPrecovenda() {
+        return precovenda;
+    }
+
+    public void setPrecovenda(Double precovenda) {
+        this.precovenda = precovenda;
     }
 
     public List<Venda> getVendedorvenda() {
