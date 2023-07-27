@@ -8,6 +8,7 @@ Create Table cliente(
     nascimentocli date not null,
     telefonecli varchar(15) not null,
     enderecocli varchar(40) not null,
+    numerocli varchar(6) not null,
     complementocli varchar(6) null,
     documentocli varchar(60) not null,
     idcidade bigint not null

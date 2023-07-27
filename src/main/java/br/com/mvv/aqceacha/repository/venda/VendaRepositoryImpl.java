@@ -42,7 +42,7 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("datavenda")));
         criteria.orderBy(builder.asc(root.get("idcli").get("nomecli")));
         criteria.orderBy(builder.asc(root.get("idven").get("nomeven")));
-        criteria.orderBy(builder.asc(root.get("idven").get("precovenda")));
+        //criteria.orderBy(builder.asc(root.get("idven").get("precovenda")));
 
         TypedQuery<VendaDto> query = manager.createQuery(criteria);
         adicionarRestricoes(query, pageable);
@@ -60,7 +60,7 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("datavenda")));
         criteria.orderBy(builder.asc(root.get("idcli").get("nomecli")));
         criteria.orderBy(builder.asc(root.get("idven").get("nomeven")));
-        criteria.orderBy(builder.asc(root.get("idven").get("precovenda")));
+        //criteria.orderBy(builder.asc(root.get("idven").get("precovenda")));
 
         criteria.select(builder.count(root));
 
@@ -82,11 +82,11 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (VendaFilter.getDatavenda() != null){
+        if (vendaFilter.getDatavenda() != null){
             predicates.add(builder.lessThanOrEqualTo(root.get("datavenda"),
                     vendaFilter.getDatavenda()));
         }
-        if (VendaFilter.getDatavenda() != null){
+        if (vendaFilter.getDatavenda() != null){
             predicates.add(builder.greaterThanOrEqualTo(root.get("datavenda"),
                     vendaFilter.getDatavenda()));
         }
@@ -98,14 +98,14 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
             predicates.add(builder.like(builder.lower(root.get("vendedor").get("nomeven")),
                     "%" + vendaFilter.getNomeven().toLowerCase() + "%" ));
         }
-        if (VendaFilter.getPrecovenda() != null){
+        /*if (vendaFilter.getPrecovenda() != null){
             predicates.add(builder.lessThanOrEqualTo(root.get("vendedor").get("precovenda"),
                     vendaFilter.getPrecovenda()));
         }
-        if (VendaFilter.getPrecovenda() != null){
+        if (vendaFilter.getPrecovenda() != null){
             predicates.add(builder.greaterThanOrEqualTo(root.get("vendedor").get("precovenda"),
                     vendaFilter.getPrecovenda()));
-        }
+        }*/
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }

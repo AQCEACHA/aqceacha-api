@@ -3,4 +3,5 @@ Create Table venda(
   datavenda date not null,
   idcli bigint not null,
   idven bigint not null
+  --precovenda decimal(8,2) not null
 );

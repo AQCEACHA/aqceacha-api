@@ -27,10 +27,10 @@ public class Vendedor {
     private Date nascimentoven;
     private String telefoneven;
     private String enderecoven;
+    private String numeroven;
     private String complementoven;
     private String documentoven;
     private String cnpj;
-    private Double precovenda;
 
     @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
@@ -148,14 +148,6 @@ public class Vendedor {
         this.cnpj = cnpj;
     }
 
-    public Double getPrecovenda() {
-        return precovenda;
-    }
-
-    public void setPrecovenda(Double precovenda) {
-        this.precovenda = precovenda;
-    }
-
     public List<Venda> getVendedorvenda() {
         return vendedorvenda;
     }
@@ -178,6 +170,14 @@ public class Vendedor {
 
     public void setRamoAtv(RamoAtv ramoAtv) {
         this.ramoAtv = ramoAtv;
+    }
+
+    public String getNumeroven() {
+        return numeroven;
+    }
+
+    public void setNumeroven(String numeroven) {
+        this.numeroven = numeroven;
     }
 
     @Override

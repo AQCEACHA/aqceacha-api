@@ -10,9 +10,9 @@ public class VendaFilter {
 
     private String nomeven;
 
-    private Double precovenda;
+   // private Double precovenda;
 
-    public static Date getDatavenda() {
+    public Date getDatavenda() {
         return datavenda;
     }
 
@@ -36,11 +36,11 @@ public class VendaFilter {
         this.nomeven = nomeven;
     }
 
-    public static Double getPrecovenda() {
+   /* public Double getPrecovenda() {
         return precovenda;
     }
 
     public void setPrecovenda(Double precovenda) {
         this.precovenda = precovenda;
-    }
+    }*/
 }

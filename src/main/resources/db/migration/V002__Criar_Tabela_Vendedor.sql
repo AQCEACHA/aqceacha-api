@@ -6,12 +6,13 @@ Create Table vendedor(
     emailven varchar(60) not null,
     senhaven varchar(20) not null,
     apelidoven varchar(20) not null,
+    nascimentoven date not null,
     telefoneven varchar(15) not null,
     enderecoven varchar(40) not null,
+    numeroven varchar(6) not null,
     complementoven varchar(6) null,
     documentoven varchar(60) not null,
     cnpj varchar(60) null,
     idcidade bigint not null,
-    idramo bigint not null,
-    precovenda decimal(8,2)
+    idramo bigint not null
 );

@@ -24,6 +24,7 @@ public class Cliente {
     private Date nascimentocli;
     private String telefonecli;
     private String enderecocli;
+    private String numerocli;
     private String complementocli;
     private String documentocli;
 
@@ -132,6 +133,13 @@ public class Cliente {
         this.documentocli = documentocli;
     }
 
+    public String getNumerocli() {
+        return numerocli;
+    }
+
+    public void setNumerocli(String numerocli) {
+        this.numerocli = numerocli;
+    }
 
     @Override
     public boolean equals(Object o) {
