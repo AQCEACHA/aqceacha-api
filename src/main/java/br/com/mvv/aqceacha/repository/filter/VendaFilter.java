@@ -10,7 +10,9 @@ public class VendaFilter {
 
     private String nomeven;
 
-   // private Double precovenda;
+    private String nomeserv;
+
+   private Double precovenda;
 
     public Date getDatavenda() {
         return datavenda;
@@ -36,11 +38,19 @@ public class VendaFilter {
         this.nomeven = nomeven;
     }
 
-   /* public Double getPrecovenda() {
+   public Double getPrecovenda() {
         return precovenda;
     }
 
     public void setPrecovenda(Double precovenda) {
         this.precovenda = precovenda;
-    }*/
+    }
+
+    public String getNomeserv() {
+        return nomeserv;
+    }
+
+    public void setNomeserv(String nomeserv) {
+        this.nomeserv = nomeserv;
+    }
 }

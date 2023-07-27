@@ -33,16 +33,17 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
         criteria.select(builder.construct(VendaDto.class,
                 root.get("idvenda"),
                 root.get("datavenda"),
-                root.get("idcli"),
-                root.get("idven")
+                root.get("cliente").get("idcli"),
+                root.get("vendedor").get("idven"),
+                root.get("servico").get("precovenda")
         ));
 
         Predicate[] predicates = criarRestricoes(vendaFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("datavenda")));
-        criteria.orderBy(builder.asc(root.get("idcli").get("nomecli")));
-        criteria.orderBy(builder.asc(root.get("idven").get("nomeven")));
-        //criteria.orderBy(builder.asc(root.get("idven").get("precovenda")));
+        criteria.orderBy(builder.asc(root.get("cliente").get("nomecli")));
+        criteria.orderBy(builder.asc(root.get("vendedor").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("servico").get("precovenda")));
 
         TypedQuery<VendaDto> query = manager.createQuery(criteria);
         adicionarRestricoes(query, pageable);
@@ -58,9 +59,9 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
         Predicate[] predicates = criarRestricoes(vendaFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("datavenda")));
-        criteria.orderBy(builder.asc(root.get("idcli").get("nomecli")));
-        criteria.orderBy(builder.asc(root.get("idven").get("nomeven")));
-        //criteria.orderBy(builder.asc(root.get("idven").get("precovenda")));
+        criteria.orderBy(builder.asc(root.get("cliente").get("nomecli")));
+        criteria.orderBy(builder.asc(root.get("vendedor").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("servico").get("precovenda")));
 
         criteria.select(builder.count(root));
 
@@ -98,14 +99,14 @@ public class VendaRepositoryImpl implements VendaRepositoryQuery{
             predicates.add(builder.like(builder.lower(root.get("vendedor").get("nomeven")),
                     "%" + vendaFilter.getNomeven().toLowerCase() + "%" ));
         }
-        /*if (vendaFilter.getPrecovenda() != null){
-            predicates.add(builder.lessThanOrEqualTo(root.get("vendedor").get("precovenda"),
+        if (vendaFilter.getPrecovenda() != null){
+            predicates.add(builder.lessThanOrEqualTo(root.get("servico").get("precovenda"),
                     vendaFilter.getPrecovenda()));
         }
         if (vendaFilter.getPrecovenda() != null){
-            predicates.add(builder.greaterThanOrEqualTo(root.get("vendedor").get("precovenda"),
+            predicates.add(builder.greaterThanOrEqualTo(root.get("servico").get("precovenda"),
                     vendaFilter.getPrecovenda()));
-        }*/
+        }
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }

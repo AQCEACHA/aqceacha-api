@@ -33,6 +33,10 @@ public class Venda {
     @JoinColumn(name = "idven")
     private Vendedor vendedor;
 
+    @ManyToOne
+    @JoinColumn(name = "idserv")
+    private Servico servico;
+
 
     public long getIdvenda() {
         return idvenda;
@@ -72,6 +76,14 @@ public class Venda {
 
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     @Override

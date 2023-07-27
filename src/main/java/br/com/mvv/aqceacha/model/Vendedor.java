@@ -44,6 +44,10 @@ public class Vendedor {
     @JoinColumn(name = "idramo")
     private RamoAtv ramoAtv;
 
+    @ManyToOne
+    @JoinColumn(name = "idserv")
+    private Servico servico;
+
     public long getIdven() {
         return idven;
     }
@@ -178,6 +182,14 @@ public class Vendedor {
 
     public void setNumeroven(String numeroven) {
         this.numeroven = numeroven;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     @Override

@@ -58,8 +58,8 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
         Predicate[] predicates = criarRestricoes(clienteFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomecli")));
-        criteria.orderBy(builder.asc(root.get("nomecidade")));
-        criteria.orderBy(builder.asc(root.get("uf")));
+        criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
+        criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
 
         criteria.select(builder.count(root));
 
