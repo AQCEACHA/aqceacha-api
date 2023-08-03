@@ -10,6 +10,8 @@ public class VendedorFilter {
 
     private String uf;
 
+    private String nomeserv;
+
     public String getNomeven() {
         return nomeven;
     }
@@ -40,5 +42,13 @@ public class VendedorFilter {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getNomeserv() {
+        return nomeserv;
+    }
+
+    public void setNomeserv(String nomeserv) {
+        this.nomeserv = nomeserv;
     }
 }

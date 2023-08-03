@@ -12,12 +12,15 @@ public class VendedorDto {
 
     private String uf;
 
-    public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf) {
+    private String nomeserv;
+
+    public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf, String nomeserv) {
         this.idven = idven;
         this.nomeven = nomeven;
         this.ramo = ramo;
         this.nomecidade = nomecidade;
         this.uf = uf;
+        this.nomeserv = nomeserv;
     }
 
     public Long getIdven() {
@@ -58,5 +61,13 @@ public class VendedorDto {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getNomeserv() {
+        return nomeserv;
+    }
+
+    public void setNomeserv(String nomeserv) {
+        this.nomeserv = nomeserv;
     }
 }
