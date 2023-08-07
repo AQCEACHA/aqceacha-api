@@ -14,5 +14,6 @@ Create Table vendedor(
     cnpj varchar(60) null,
     idcidade bigint not null,
     idramo bigint not null,
-    idserv bigint not null
+    idserv bigint not null,
+    unique(emailven)
 );

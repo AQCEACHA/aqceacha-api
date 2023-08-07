@@ -18,6 +18,7 @@ public class Cliente {
     @GeneratedValue(strategy = IDENTITY)
     private long idcli;
     private String nomecli;
+    @Column(unique=true)
     private String emailcli;
     private String senhacli;
     private String apelidocli;

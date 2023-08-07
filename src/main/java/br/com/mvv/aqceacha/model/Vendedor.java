@@ -21,6 +21,7 @@ public class Vendedor {
     private String nomeven;
     private String imgven;
     private String publiimg;
+    @Column(unique=true)
     private String emailven;
     private String senhaven;
     private String apelidoven;
