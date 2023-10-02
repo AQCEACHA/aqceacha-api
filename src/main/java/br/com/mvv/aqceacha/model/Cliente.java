@@ -29,9 +29,6 @@ public class Cliente {
     private String complementocli;
     private String documentocli;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "cliente")
-    private List<Venda> clientevenda = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "idcidade")
@@ -51,14 +48,6 @@ public class Cliente {
 
     public void setNomecli(String namecli) {
         this.nomecli = namecli;
-    }
-
-    public List<Venda> getClientevenda() {
-        return clientevenda;
-    }
-
-    public void setClientevenda(List<Venda> clientevenda) {
-        this.clientevenda = clientevenda;
     }
 
 

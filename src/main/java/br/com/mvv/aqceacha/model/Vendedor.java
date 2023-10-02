@@ -33,9 +33,6 @@ public class Vendedor {
     private String documentoven;
     private String cnpj;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "vendedor")
-    private List<Venda> vendedorvenda = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "idcidade")
@@ -152,14 +149,7 @@ public class Vendedor {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-
-    public List<Venda> getVendedorvenda() {
-        return vendedorvenda;
-    }
-
-    public void setVendedorvenda(List<Venda> vendedorvenda) {
-        this.vendedorvenda = vendedorvenda;
-    }
+    
 
     public Cidade getCidade() {
         return cidade;

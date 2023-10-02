@@ -13,14 +13,6 @@ alter table vendedor add constraint fk_vendedor_ramo foreign key(idramo) referen
 
 alter table vendedor add constraint fk_vendedor_serv foreign key(idserv) references servico(idserv);
 
--- Venda
-
-alter table venda add constraint fk_venda_cliente foreign key(idcli) references cliente(idcli);
-
-alter table venda add constraint fk_venda_vendedor foreign key(idven) references vendedor(idven);
-
-alter table venda add constraint fk_venda_serv foreign key(idserv) references servico(idserv);
-
 
 --                                        Inserts
 
@@ -54,7 +46,3 @@ insert into vendedor values (0, 'Vitor Lopes', 'foto', 'vitao@email.com', '1111'
 
 insert into vendedor values (0, 'Gabriela Silva', 'foto', 'gabi@email.com', '2121', 'Gabi', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 2, 2, 2);
 
--- Venda
-insert into venda values (0, '2022-04-14', 1, 1, 1);
-
-insert into venda values (0, '2023-05-09', 2, 2, 2);
