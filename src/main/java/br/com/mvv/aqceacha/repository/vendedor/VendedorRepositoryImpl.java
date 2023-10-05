@@ -4,6 +4,7 @@ import br.com.mvv.aqceacha.model.Vendedor;
 import br.com.mvv.aqceacha.repository.filter.VendedorFilter;
 import br.com.mvv.aqceacha.repository.projections.VendedorDto;
 import org.apache.commons.lang3.StringUtils;
+import org.aspectj.util.LangUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -36,14 +37,15 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
                 root.get("ramoatv").get("ramo"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.get("servico").get("nomeserv")
-
+                root.get("servico").get("nomeserv"),
+                root.get("star")
 
         ));
 
         Predicate[] predicates = criarRestricoes(vendedorFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("star")));
         criteria.orderBy(builder.asc(root.get("ramoatv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("servico").get("precovenda")));
@@ -62,6 +64,7 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
         Predicate[] predicates = criarRestricoes(vendedorFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("star")));
         criteria.orderBy(builder.asc(root.get("ramoatv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));

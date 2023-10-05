@@ -28,6 +28,7 @@ public class Cliente {
     private String numerocli;
     private String complementocli;
     private String documentocli;
+    private String fav;
 
 
     @ManyToOne
@@ -131,7 +132,15 @@ public class Cliente {
         this.numerocli = numerocli;
     }
 
-    @Override
+  public String getFav() {
+    return fav;
+  }
+
+  public void setFav(String fav) {
+    this.fav = fav;
+  }
+
+  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

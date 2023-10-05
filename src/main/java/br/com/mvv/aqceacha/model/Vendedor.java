@@ -32,6 +32,7 @@ public class Vendedor {
     private String complementoven;
     private String documentoven;
     private String cnpj;
+    private Double star;
 
 
     @ManyToOne
@@ -149,7 +150,7 @@ public class Vendedor {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-    
+
 
     public Cidade getCidade() {
         return cidade;
@@ -183,7 +184,15 @@ public class Vendedor {
         this.servico = servico;
     }
 
-    @Override
+  public Double getStar() {
+    return star;
+  }
+
+  public void setStar(Double star) {
+    this.star = star;
+  }
+
+  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
