@@ -12,14 +12,17 @@ public class VendedorDto {
 
     private String uf;
 
+    private Double star;
+
     private String nomeserv;
 
-    public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf, String nomeserv) {
+    public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf, Double star, String nomeserv) {
         this.idven = idven;
         this.nomeven = nomeven;
         this.ramo = ramo;
         this.nomecidade = nomecidade;
         this.uf = uf;
+        this.star = star;
         this.nomeserv = nomeserv;
     }
 
@@ -63,11 +66,19 @@ public class VendedorDto {
         this.uf = uf;
     }
 
-    public String getNomeserv() {
-        return nomeserv;
-    }
+  public String getNomeserv() {
+    return nomeserv;
+  }
 
-    public void setNomeserv(String nomeserv) {
-        this.nomeserv = nomeserv;
-    }
+  public void setNomeserv(String nomeserv) {
+    this.nomeserv = nomeserv;
+  }
+
+  public double getStar() {
+    return star;
+  }
+
+  public void setStar(double star) {
+    this.star = star;
+  }
 }

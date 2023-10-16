@@ -12,9 +12,9 @@ Create Table vendedor(
     complementoven varchar(6) null,
     documentoven varchar(60) not null,
     cnpj varchar(60) null,
+    star double null,
     idcidade bigint not null,
     idramo bigint not null,
     idserv bigint not null,
-    star double null,
     unique(emailven)
 );

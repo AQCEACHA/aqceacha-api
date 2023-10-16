@@ -12,6 +12,8 @@ public class VendedorFilter {
 
     private String nomeserv;
 
+    private Double star;
+
     public String getNomeven() {
         return nomeven;
     }
@@ -51,4 +53,12 @@ public class VendedorFilter {
     public void setNomeserv(String nomeserv) {
         this.nomeserv = nomeserv;
     }
+
+  public Double getStar() {
+    return star;
+  }
+
+  public void setStar(Double star) {
+    this.star = star;
+  }
 }

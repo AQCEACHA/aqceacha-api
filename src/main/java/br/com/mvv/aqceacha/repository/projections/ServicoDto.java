@@ -17,4 +17,35 @@ public class ServicoDto {
         this.precovenda = precovenda;
     }
 
+  public Long getIdserv() {
+    return idserv;
+  }
+
+  public void setIdserv(Long idserv) {
+    this.idserv = idserv;
+  }
+
+  public String getNomeserv() {
+    return nomeserv;
+  }
+
+  public void setNomeserv(String nomeserv) {
+    this.nomeserv = nomeserv;
+  }
+
+  public String getRamo() {
+    return ramo;
+  }
+
+  public void setRamo(String ramo) {
+    this.ramo = ramo;
+  }
+
+  public Double getPrecovenda() {
+    return precovenda;
+  }
+
+  public void setPrecovenda(Double precovenda) {
+    this.precovenda = precovenda;
+  }
 }

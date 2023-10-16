@@ -19,6 +19,7 @@ public class RamoAtv {
     private long idramo;
     private String ramo;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "ramoatv")
     private List<RamoAtv> ramoatv = new ArrayList<>();
@@ -47,7 +48,8 @@ public class RamoAtv {
         this.ramoatv = ramoatv;
     }
 
-    @Override
+
+  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

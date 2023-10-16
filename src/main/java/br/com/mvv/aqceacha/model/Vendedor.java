@@ -41,7 +41,7 @@ public class Vendedor {
 
     @ManyToOne
     @JoinColumn(name = "idramo")
-    private RamoAtv ramoAtv;
+    private RamoAtv ramoatv;
 
     @ManyToOne
     @JoinColumn(name = "idserv")
@@ -160,14 +160,6 @@ public class Vendedor {
         this.cidade = cidade;
     }
 
-    public RamoAtv getRamoAtv() {
-        return ramoAtv;
-    }
-
-    public void setRamoAtv(RamoAtv ramoAtv) {
-        this.ramoAtv = ramoAtv;
-    }
-
     public String getNumeroven() {
         return numeroven;
     }
@@ -190,6 +182,14 @@ public class Vendedor {
 
   public void setStar(Double star) {
     this.star = star;
+  }
+
+  public RamoAtv getRamoatv() {
+    return ramoatv;
+  }
+
+  public void setRamoatv(RamoAtv ramoatv) {
+    this.ramoatv = ramoatv;
   }
 
   @Override

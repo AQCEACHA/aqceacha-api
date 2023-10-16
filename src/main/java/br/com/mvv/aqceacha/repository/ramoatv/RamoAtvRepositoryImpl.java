@@ -29,16 +29,14 @@ public class RamoAtvRepositoryImpl implements RamoAtvRepositoryQuery {
         CriteriaQuery<RamoAtv> criteria = builder.createQuery(RamoAtv.class);
         Root<RamoAtv> root = criteria.from(RamoAtv.class);
 
-        Predicate[] predicates = criarRestricoes(ramoAtvFilter, builder, root);
-        criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("ramo")));
-        criteria.orderBy(builder.asc(root.get("nomecidade")));
-        criteria.orderBy(builder.asc(root.get("uf")));
+      Predicate[] predicates = criarRestricoes(ramoAtvFilter, builder, root);
+      criteria.where(predicates);
+      criteria.orderBy(builder.asc(root.get("ramo")));
 
 
-        TypedQuery<RamoAtv> query = manager.createQuery(criteria);
+      TypedQuery<RamoAtv> query = manager.createQuery(criteria);
 
-        adicionarRestricoes(query, pageable);
+      adicionarRestricoes(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(ramoAtvFilter));
     }
@@ -50,8 +48,6 @@ public class RamoAtvRepositoryImpl implements RamoAtvRepositoryQuery {
         Predicate[] predicates = criarRestricoes(ramoAtvFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("ramo")));
-        criteria.orderBy(builder.asc(root.get("nomecidade")));
-        criteria.orderBy(builder.asc(root.get("uf")));
 
         criteria.select(builder.count(root));
 
@@ -76,14 +72,6 @@ public class RamoAtvRepositoryImpl implements RamoAtvRepositoryQuery {
         if (!StringUtils.isEmpty(ramoAtvFilter.getRamo())){
             predicates.add(builder.like(builder.lower(root.get("ramo")),
                     "%" + ramoAtvFilter.getRamo().toLowerCase() + "%" ));
-        }
-        if (!StringUtils.isEmpty(ramoAtvFilter.getNomecidade())){
-            predicates.add(builder.like(builder.lower(root.get("nomecidade")),
-                    "%" + ramoAtvFilter.getNomecidade().toLowerCase() + "%" ));
-        }
-        if (!StringUtils.isEmpty(ramoAtvFilter.getUf())){
-            predicates.add(builder.like(builder.lower(root.get("uf")),
-                    "%" + ramoAtvFilter.getUf().toLowerCase() + "%" ));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);

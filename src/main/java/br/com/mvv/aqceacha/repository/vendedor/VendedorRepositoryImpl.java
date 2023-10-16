@@ -37,18 +37,17 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
                 root.get("ramoatv").get("ramo"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.get("servico").get("nomeserv"),
-                root.get("star")
-
+                root.get("star"),
+                root.get("servico").get("nomeserv")
         ));
 
         Predicate[] predicates = criarRestricoes(vendedorFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeven")));
-        criteria.orderBy(builder.asc(root.get("star")));
         criteria.orderBy(builder.asc(root.get("ramoatv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
-        criteria.orderBy(builder.asc(root.get("servico").get("precovenda")));
+        criteria.orderBy(builder.asc(root.get("star")));
+        criteria.orderBy(builder.asc(root.get("servico").get("nomeserv")));
 
         TypedQuery<VendedorDto> query = manager.createQuery(criteria);
         adicionarRestricoes(query, pageable);
@@ -64,10 +63,10 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
         Predicate[] predicates = criarRestricoes(vendedorFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeven")));
-        criteria.orderBy(builder.asc(root.get("star")));
         criteria.orderBy(builder.asc(root.get("ramoatv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
+        criteria.orderBy(builder.asc(root.get("star")));
         criteria.orderBy(builder.asc(root.get("servico").get("nomeserv")));
 
         criteria.select(builder.count(root));
