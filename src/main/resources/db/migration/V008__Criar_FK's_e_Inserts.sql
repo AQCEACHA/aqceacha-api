@@ -16,12 +16,6 @@ alter table vendedor add constraint fk_vendedor_serv foreign key(idserv) referen
 
 --                                        Inserts
 
--- Cidades
-
-insert into cidade values (0, 'Lençóis Paulista', 'SP');
-
-insert into cidade values (0, 'Bauru', 'SP');
-
 -- Ramos
 
 insert into ramoatv values (0, 'Dentista');

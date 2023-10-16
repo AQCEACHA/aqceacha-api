@@ -2065,7 +2065,7 @@ insert into cidade (idcidade, nomecidade, uf) values
 (2064, 'Monte Sião', 'MG'),
 (2065, 'Montes Claros', 'MG'),
 (2066, 'Montezuma', 'MG'),
-(2067, 'Morada Nova de Minas', 'MG');
+(2067, 'Morada Nova de Minas', 'MG'),
 (2068, 'Morro da Garça', 'MG'),
 (2069, 'Morro do Pilar', 'MG'),
 (2070, 'Munhoz', 'MG'),
@@ -3974,7 +3974,7 @@ insert into cidade (idcidade, nomecidade, uf) values
 (3973, 'Cristal do Sul', 'RS'),
 (3974, 'Cruz Alta', 'RS'),
 (3975, 'Cruzaltense', 'RS'),
-(3976, 'Cruzeiro do Sul', 'RS');
+(3976, 'Cruzeiro do Sul', 'RS'),
 (3977, 'David Canabarro', 'RS'),
 (3978, 'Derrubadas', 'RS'),
 (3979, 'Dezesseis de Novembro', 'RS'),
