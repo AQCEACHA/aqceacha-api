@@ -28,12 +28,14 @@ public class Cliente {
     private String numerocli;
     private String complementocli;
     private String documentocli;
-    private String fav;
-
 
     @ManyToOne
     @JoinColumn(name = "idcidade")
     private Cidade cidade;
+
+    @ManyToOne
+    @JoinColumn(name = "idfav")
+    private Favorito favorito;
 
     public long getIdcli() {
         return idcli;
@@ -132,15 +134,15 @@ public class Cliente {
         this.numerocli = numerocli;
     }
 
-  public String getFav() {
-    return fav;
-  }
+    public Favorito getFavorito() {
+        return favorito;
+    }
 
-  public void setFav(String fav) {
-    this.fav = fav;
-  }
+    public void setFavorito(Favorito favorito) {
+        this.favorito = favorito;
+    }
 
-  @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

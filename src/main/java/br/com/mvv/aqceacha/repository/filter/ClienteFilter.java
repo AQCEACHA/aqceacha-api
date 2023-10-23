@@ -8,6 +8,8 @@ public class ClienteFilter {
 
     private String uf;
 
+    private String nomeven;
+
     public String getNomecli() {
         return nomecli;
     }
@@ -30,5 +32,13 @@ public class ClienteFilter {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getNomeven() {
+        return nomeven;
+    }
+
+    public void setNomeven(String nomeven) {
+        this.nomeven = nomeven;
     }
 }

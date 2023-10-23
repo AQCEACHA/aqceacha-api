@@ -9,11 +9,14 @@ public class ClienteDto {
 
     private String uf;
 
-    public ClienteDto(Long idcli, String nomecli, String nomecidade, String uf) {
+    private String nomeven;
+
+    public ClienteDto(Long idcli, String nomecli, String nomecidade, String uf, String nomeven) {
         this.idcli = idcli;
         this.nomecli = nomecli;
         this.nomecidade = nomecidade;
         this.uf = uf;
+        this.nomeven = nomeven;
     }
 
     public Long getIdcli() {
@@ -46,5 +49,13 @@ public class ClienteDto {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getNomeven() {
+        return nomeven;
+    }
+
+    public void setNomeven(String nomeven) {
+        this.nomeven = nomeven;
     }
 }

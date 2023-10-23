@@ -12,6 +12,6 @@ Create Table cliente(
     complementocli varchar(6) null,
     documentocli varchar(60) not null,
     idcidade bigint not null,
-    fav varchar(60) null,
+    idfav bigint null,
     unique(emailcli)
 );
