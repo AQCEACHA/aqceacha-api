@@ -41,9 +41,9 @@ insert into servico values (0, 'Formatação', 50.00, 'foto', 2);
 
 -- Vendedor
 
-insert into vendedor values (0, 'Vitor Lopes', 'foto', 'vitao@email.com', '1111', 'Vitao', '2005-08-04', '(14)999302010', 'R. bebebe', '61', null, 'doc', 'cnpj', 3, 1, 1, 1);
+insert into vendedor values (0, 'Vitor Lopes', 'foto', 'fotopubli', 'vitao@email.com', '1111', 'Vitao', '2005-08-04', '(14)999302010', 'R. bebebe', '61', null, 'doc', 'cnpj', 3, 1, 1, 1);
 
-insert into vendedor values (0, 'Gabriela Silva', 'foto', 'gabi@email.com', '2121', 'Gabi', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2, 2);
+insert into vendedor values (0, 'Gabriela Silva', 'foto', null, 'gabi@email.com', '2121', 'Gabi', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2, 2);
 
 
 -- Favorito
