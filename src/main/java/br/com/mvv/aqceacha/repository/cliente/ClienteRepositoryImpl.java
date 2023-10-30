@@ -35,8 +35,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                 root.get("nomecli"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.get("favorito").get("vendedor").get("nomeven")
-        ));
+                root.get("favorito").get("vendedor").get("nomeven")));
 
         Predicate[] predicates = criarRestricoes(clienteFilter, builder, root);
         criteria.where(predicates);
