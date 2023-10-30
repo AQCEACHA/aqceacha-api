@@ -35,7 +35,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                 root.get("nomecli"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.get("favoritos").get("nomeven")
+                root.get("favorito").get("vendedor").get("nomeven")
         ));
 
         Predicate[] predicates = criarRestricoes(clienteFilter, builder, root);
@@ -43,7 +43,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("nomecli")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
-        criteria.orderBy(builder.asc(root.get("favoritos").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("nomeven")));
 
 
         TypedQuery<ClienteDto> query = manager.createQuery(criteria);
@@ -62,7 +62,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("nomecli")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
-        criteria.orderBy(builder.asc(root.get("favoritos").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("nomeven")));
 
         criteria.select(builder.count(root));
 
@@ -97,7 +97,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                     "%" + clienteFilter.getUf().toLowerCase() + "%" ));
         }
         if (!StringUtils.isEmpty(clienteFilter.getNomeven())){
-            predicates.add(builder.like(builder.lower(root.get("favorito").get("nomeven")),
+            predicates.add(builder.like(builder.lower(root.get("favorito").get("vendedor").get("nomeven")),
                     "%" + clienteFilter.getNomeven().toLowerCase() + "%" ));
         }
 
