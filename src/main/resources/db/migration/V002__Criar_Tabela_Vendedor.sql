@@ -1,7 +1,7 @@
 Create Table vendedor(
     idven bigint not null auto_increment primary key,
     nomeven varchar(60) not null,
-    imgven varchar(255) null,
+    imgven varchar(500) null,
     publiimg varchar (255) null,
     emailven varchar(60) not null,
     senhaven varchar(20) not null,
