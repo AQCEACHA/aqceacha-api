@@ -27,10 +27,17 @@ alter table servico add constraint fk_servico_ramo foreign key(idramo) reference
 
 -- Ramos
 
-insert into ramoatv values (0, 'Dentista');
+insert into ramoatv values (0, 'Fotógrafo', 'camera');
 
-insert into ramoatv values (0, 'Técnico de Informática');
+insert into ramoatv values (0, 'T.I.', 'cpu');
 
+insert into ramoatv values (0, 'Mecânico', 'tool');
+
+insert into ramoatv values (0, 'Advogado', 'briefcase');
+
+insert into ramoatv values (0, 'Professor', 'clipboard');
+
+insert into ramoatv values (0, 'Médico', 'plus');
 
 -- Servico
 

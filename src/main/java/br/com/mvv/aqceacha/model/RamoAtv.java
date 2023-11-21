@@ -18,6 +18,7 @@ public class RamoAtv {
     @GeneratedValue(strategy = IDENTITY)
     private long idramo;
     private String ramo;
+    private String iconramo;
 
 
     @JsonIgnore
@@ -48,6 +49,13 @@ public class RamoAtv {
         this.ramoatv = ramoatv;
     }
 
+  public String getIconramo() {
+    return iconramo;
+  }
+
+  public void setIconramo(String iconramo) {
+    this.iconramo = iconramo;
+  }
 
   @Override
     public boolean equals(Object o) {
