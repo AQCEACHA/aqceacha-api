@@ -7,12 +7,10 @@ import br.com.mvv.aqceacha.repository.projections.VendedorDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/vendedor")
@@ -24,6 +22,16 @@ public class VendedorResource {
     @GetMapping()
     public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
         return vendedorRepository.filtrar(vendedorFilter, pageable);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/{id}")
+    public Vendedor getById(@PathVariable Long id) {
+      Optional<Vendedor> vendedorOptional = vendedorRepository.findById(id);
+      if (vendedorOptional.isPresent()) {
+        return vendedorOptional.get();
+      }
+      return null;
     }
 
     @CrossOrigin("*")
