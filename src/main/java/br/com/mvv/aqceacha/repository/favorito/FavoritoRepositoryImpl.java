@@ -32,15 +32,18 @@ public class FavoritoRepositoryImpl implements FavoritoRepositoryQuery {
 
         criteria.select(builder.construct(FavoritoDto.class,
                 root.get("idfav"),
-                root.get("vendedor").get("nomeven")
+                root.get("vendedor").get("nomeven"),
+                root.get("vendedor").get("imgven")
+
         ));
 
         Predicate[] predicates = criarRestricoes(favoritoFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("idfav")));
         criteria.orderBy(builder.asc(root.get("vendedor").get("nomeven")));
+      criteria.orderBy(builder.asc(root.get("vendedor").get("imgven")));
 
-        TypedQuery<FavoritoDto> query = manager.createQuery(criteria);
+      TypedQuery<FavoritoDto> query = manager.createQuery(criteria);
         adicionarRestricoes(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(favoritoFilter));
@@ -54,8 +57,9 @@ public class FavoritoRepositoryImpl implements FavoritoRepositoryQuery {
         Predicate[] predicates = criarRestricoes(favoritoFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("vendedor").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("vendedor").get("imgven")));
 
-        criteria.select(builder.count(root));
+      criteria.select(builder.count(root));
 
         return manager.createQuery(criteria).getSingleResult();
 

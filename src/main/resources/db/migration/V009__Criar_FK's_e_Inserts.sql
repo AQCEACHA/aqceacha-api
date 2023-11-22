@@ -65,9 +65,6 @@ insert into favorito values (0, 2);
 
 insert into cliente values (0, 'Mariana Rove', 'foto', 'mariana@email.com', '2112', 'Mari', '2005-12-21', '(14)998030507', 'R. papapa', '11', null ,'121212', 1, 1);
 
-insert into cliente values (0, 'Matheus Cola', 'foto', 'eocola@email.com', '0101', 'Cola', '2005-05-23', '(14)99867493', 'R. ranran', '1416', '61', '121212', 2, 2);
-
-
 
 
 

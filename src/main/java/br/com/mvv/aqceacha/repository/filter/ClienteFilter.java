@@ -10,6 +10,8 @@ public class ClienteFilter {
 
     private String nomeven;
 
+    private String imgven;
+
     public String getNomecli() {
         return nomecli;
     }
@@ -41,4 +43,12 @@ public class ClienteFilter {
     public void setNomeven(String nomeven) {
         this.nomeven = nomeven;
     }
+
+  public String getImgven() {
+    return imgven;
+  }
+
+  public void setImgven(String imgven) {
+    this.imgven = imgven;
+  }
 }

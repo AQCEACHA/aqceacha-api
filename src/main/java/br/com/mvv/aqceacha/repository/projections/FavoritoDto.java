@@ -6,9 +6,12 @@ public class FavoritoDto {
 
     private String nomeven;
 
-    public FavoritoDto(Long idfav, String nomeven){
+    private String imgven;
+
+    public FavoritoDto(Long idfav, String nomeven, String imgven){
         this.idfav = idfav;
         this.nomeven = nomeven;
+        this.imgven = imgven;
     }
 
     public Long getIdfav() {
@@ -26,4 +29,12 @@ public class FavoritoDto {
     public void setNomeven(String nomeven) {
         this.nomeven = nomeven;
     }
+
+  public String getImgven() {
+    return imgven;
+  }
+
+  public void setImgven(String imgven) {
+    this.imgven = imgven;
+  }
 }
