@@ -27,9 +27,11 @@ alter table servicovendedor add constraint fk_servicovendedor foreign key(idserv
 
 alter table servicovendedor add constraint fk_vendedorservico foreign key(idven) references vendedor(idven);
 
---Imagens
+--Imagens Vendedor
 
-alter table 
+alter table imagensservico add constraint fk_servicoimagens foreign key(idimg) references imagens(idimg);
+
+alter table imagensservico add constraint fk_imagensservico foreign key(idserv) references servico(idserv);
 
 --                                        Inserts
 
@@ -53,6 +55,11 @@ insert into servico values (0, 'Dente', 100.00, 'https://centroconscientia.com.b
 
 insert into servico values (0, 'Formatação', 50.00, 'https://www.oficinadanet.com.br/imagens/post/14237/manutencao_pc.jpg', 2);
 
+-- Image
+
+insert into imagens values (0, 'https://centroconscientia.com.br/wp-content/uploads/2019/08/alexander-kopelman-4fa6.jpg');
+
+insert into imagens values (0, 'https://www.oficinadanet.com.br/imagens/post/14237/manutencao_pc.jpg');
 
 -- Vendedor
 
@@ -62,12 +69,17 @@ insert into vendedor values (0, 'Gabriela Silva', 'https://img.quizur.com/f/img6
 
 insert into vendedor values (0, 'Vinicius Nogueira', 'https://kanto.legiaodosherois.com.br/w760-h398-cfill/wp-content/uploads/2019/07/legiao_Dk5jiZKIvYP_nhEcd3JqFR6watUAeslCBGLpXz1MuW.png.webp', null, 'vini@email.com', '2121', 'Vini', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2);
 
-
 -- Servico Vendedor
 
 insert into servicovendedor values (0, 1, 1);
 
 insert into servicovendedor values (0, 2, 1);
+
+-- Image Servico
+
+insert into imagensservico values (0, 1, 1);
+
+insert into imagensservico values (0, 2, 2);
 
 -- Favorito
 

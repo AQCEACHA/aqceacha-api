@@ -1,6 +1,8 @@
 package br.com.mvv.aqceacha.resource;
 
+import br.com.mvv.aqceacha.model.ImagensServico;
 import br.com.mvv.aqceacha.model.Servico;
+import br.com.mvv.aqceacha.model.ServicoVendedor;
 import br.com.mvv.aqceacha.model.Vendedor;
 import br.com.mvv.aqceacha.repository.ServicoRepository;
 import br.com.mvv.aqceacha.repository.filter.ServicoFilter;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/servico")
@@ -30,7 +33,8 @@ public class ServicoResource {
   public Servico getById(@PathVariable Long id) {
     Optional<Servico> servicoOptional = servicoRepository.findById(id);
     if (servicoOptional.isPresent()) {
-      return servicoOptional.get();
+      Servico servico = servicoOptional.get();
+
     }
     return null;
   }

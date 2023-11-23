@@ -1,11 +1,11 @@
 package br.com.mvv.aqceacha.resource;
 
-import br.com.mvv.aqceacha.model.Servico;
-import br.com.mvv.aqceacha.model.ServicoVendedor;
-import br.com.mvv.aqceacha.model.Vendedor;
+import br.com.mvv.aqceacha.model.*;
+import br.com.mvv.aqceacha.repository.ImagensRepository;
 import br.com.mvv.aqceacha.repository.ServicoRepository;
 import br.com.mvv.aqceacha.repository.VendedorRepository;
 import br.com.mvv.aqceacha.repository.filter.VendedorFilter;
+import br.com.mvv.aqceacha.repository.projections.ServicoDto;
 import br.com.mvv.aqceacha.repository.projections.VendedorDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +26,8 @@ public class VendedorResource {
     private VendedorRepository vendedorRepository;
   @Autowired
   private ServicoRepository servicoRepository;
+  @Autowired
+  private ImagensRepository imagensRepository;
 
     @GetMapping()
     public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
@@ -41,8 +43,21 @@ public class VendedorResource {
 
         List<ServicoVendedor> servicoVendedor = vendedor.getServicosVendedor();
 
-        Stream<Servico> servicos = servicoVendedor.stream().map(
-          item -> servicoRepository.findById(item.getServico().getIdserv()).get()
+        Stream<ServicoDto> servicos = servicoVendedor.stream().map(
+          item -> {
+            Servico servico = servicoRepository.findById(item.getServico().getIdserv()).get();
+            List<ImagensServico> imagensServicos = servico.getImagensServicos();
+
+            Stream<Imagens> imagens = imagensServicos.stream().map(img -> imagensRepository.findById(img.getIdimgven()).get());
+
+            return new ServicoDto(
+              servico.getIdserv(),
+              servico.getNomeserv(),
+              servico.getRamoAtv().getRamo(),
+              servico.getPrecovenda(),
+              imagens
+            );
+          }
         );
 
         VendedorDto vendedorDto = new VendedorDto(

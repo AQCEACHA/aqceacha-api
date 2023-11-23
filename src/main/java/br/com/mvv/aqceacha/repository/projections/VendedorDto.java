@@ -1,5 +1,6 @@
 package br.com.mvv.aqceacha.repository.projections;
 
+import br.com.mvv.aqceacha.model.Imagens;
 import br.com.mvv.aqceacha.model.Servico;
 
 import java.util.List;
@@ -20,9 +21,7 @@ public class VendedorDto {
 
     private Double star;
 
-    private String nomeserv;
-
-    private Stream<Servico> servicos;
+    private Stream<ServicoDto> servicos;
 
     private String imgven;
 
@@ -32,7 +31,7 @@ public class VendedorDto {
 
     private String telefoneven;
 
-    public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf, Double star, Stream<Servico> servicos, String imgven, String apelidoven, String emailven, String telefoneven) {
+    public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf, Double star, Stream<ServicoDto> servicos, String imgven, String apelidoven, String emailven, String telefoneven) {
         this.idven = idven;
         this.nomeven = nomeven;
         this.ramo = ramo;
@@ -126,11 +125,12 @@ public class VendedorDto {
     this.apelidoven = apelidoven;
   }
 
-  public Stream<Servico> getServicos() {
+  public Stream<ServicoDto> getServicos() {
     return servicos;
   }
 
-  public void setServicos(Stream<Servico> servicos) {
+  public void setServicos(Stream<ServicoDto> servicos) {
     this.servicos = servicos;
   }
+
 }

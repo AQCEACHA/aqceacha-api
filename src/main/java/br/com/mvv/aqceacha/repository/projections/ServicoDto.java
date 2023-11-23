@@ -1,5 +1,10 @@
 package br.com.mvv.aqceacha.repository.projections;
 
+import br.com.mvv.aqceacha.model.Imagens;
+import br.com.mvv.aqceacha.model.Servico;
+
+import java.util.stream.Stream;
+
 public class ServicoDto {
 
     private Long idserv;
@@ -10,11 +15,14 @@ public class ServicoDto {
 
     private Double precovenda;
 
-    public ServicoDto(Long idserv, String nomeserv, String ramo, Double precovenda) {
+  private Stream<Imagens> imagens;
+
+  public ServicoDto(Long idserv, String nomeserv, String ramo, Double precovenda, Stream<Imagens> imagens) {
         this.idserv = idserv;
         this.nomeserv = nomeserv;
         this.ramo = ramo;
         this.precovenda = precovenda;
+        this.imagens = imagens;
     }
 
   public Long getIdserv() {
@@ -47,5 +55,13 @@ public class ServicoDto {
 
   public void setPrecovenda(Double precovenda) {
     this.precovenda = precovenda;
+  }
+
+  public Stream<Imagens> getImagens() {
+    return imagens;
+  }
+
+  public void setImagens(Stream<Imagens> imagens) {
+    this.imagens = imagens;
   }
 }
