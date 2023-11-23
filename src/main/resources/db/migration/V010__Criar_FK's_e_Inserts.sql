@@ -17,11 +17,15 @@ alter table vendedor add constraint fk_vendedor_cidade foreign key(idcidade) ref
 
 alter table vendedor add constraint fk_vendedor_ramo foreign key(idramo) references ramoatv(idramo);
 
-alter table vendedor add constraint fk_vendedor_serv foreign key(idserv) references servico(idserv);
-
 -- Serviço
 
 alter table servico add constraint fk_servico_ramo foreign key(idramo) references ramoatv(idramo);
+
+-- Serviço Vendedor
+
+alter table servicovendedor add constraint fk_servicovendedor foreign key(idserv) references servico(idserv);
+
+alter table servicovendedor add constraint fk_vendedorservico foreign key(idven) references vendedor(idven);
 
 --                                        Inserts
 
@@ -48,12 +52,18 @@ insert into servico values (0, 'Formatação', 50.00, 'foto', 2);
 
 -- Vendedor
 
-insert into vendedor values (0, 'Vitor Lopes', 'https://revolucaonerd.com/wordpress/wp-content/files/revolucaonerd.com/2023/04/law.webp', 'fotopubli', 'vitao@email.com', '1111', 'Vitao', '2005-08-04', '(14)999302010', 'R. bebebe', '61', null, 'doc', 'cnpj', 3, 1, 1, 1);
+insert into vendedor values (0, 'Vitor Lopes', 'https://revolucaonerd.com/wordpress/wp-content/files/revolucaonerd.com/2023/04/law.webp', 'fotopubli', 'vitao@email.com', '1111', 'Vitao', '2005-08-04', '(14)999302010', 'R. bebebe', '61', null, 'doc', 'cnpj', 3, 1, 1);
 
-insert into vendedor values (0, 'Gabriela Silva', 'https://img.quizur.com/f/img63d966885af0d3.87555390.jpg?lastEdited=1675191962', null, 'gabi@email.com', '2121', 'Gabi', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2, 2);
+insert into vendedor values (0, 'Gabriela Silva', 'https://img.quizur.com/f/img63d966885af0d3.87555390.jpg?lastEdited=1675191962', null, 'gabi@email.com', '2121', 'Gabi', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2);
 
-insert into vendedor values (0, 'Vinicius Nogueira', 'https://kanto.legiaodosherois.com.br/w760-h398-cfill/wp-content/uploads/2019/07/legiao_Dk5jiZKIvYP_nhEcd3JqFR6watUAeslCBGLpXz1MuW.png.webp', null, 'vini@email.com', '2121', 'Vini', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2, 2);
+insert into vendedor values (0, 'Vinicius Nogueira', 'https://kanto.legiaodosherois.com.br/w760-h398-cfill/wp-content/uploads/2019/07/legiao_Dk5jiZKIvYP_nhEcd3JqFR6watUAeslCBGLpXz1MuW.png.webp', null, 'vini@email.com', '2121', 'Vini', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2);
 
+
+-- Servico Vendedor
+
+insert into servicovendedor values (0, 1, 1);
+
+insert into servicovendedor values (0, 2, 1);
 
 -- Favorito
 

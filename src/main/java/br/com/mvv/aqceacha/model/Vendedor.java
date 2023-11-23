@@ -43,9 +43,9 @@ public class Vendedor {
     @JoinColumn(name = "idramo")
     private RamoAtv ramoatv;
 
-    @ManyToOne
-    @JoinColumn(name = "idserv")
-    private Servico servico;
+
+    @OneToMany(mappedBy = "vendedor")
+    private List<ServicoVendedor> servicovendedor = new ArrayList<>();
 
     public long getIdven() {
         return idven;
@@ -168,12 +168,12 @@ public class Vendedor {
         this.numeroven = numeroven;
     }
 
-    public Servico getServico() {
-        return servico;
+    public List<ServicoVendedor> getServicosVendedor() {
+        return servicovendedor;
     }
 
-    public void setServico(Servico servico) {
-        this.servico = servico;
+    public void setServicosVendedor(List<ServicoVendedor> servicovendedor) {
+        this.servicovendedor = servicovendedor;
     }
 
   public Double getStar() {

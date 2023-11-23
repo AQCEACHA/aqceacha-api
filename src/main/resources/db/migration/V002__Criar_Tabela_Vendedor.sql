@@ -16,6 +16,5 @@ Create Table vendedor(
     star double null,
     idcidade bigint not null,
     idramo bigint not null,
-    idserv bigint not null,
     unique(emailven)
 );
