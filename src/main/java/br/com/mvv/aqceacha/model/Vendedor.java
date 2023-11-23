@@ -47,6 +47,9 @@ public class Vendedor {
     @OneToMany(mappedBy = "vendedor")
     private List<ServicoVendedor> servicovendedor = new ArrayList<>();
 
+    @OneToMany(mappedBy = "vendedor")
+    private List<ImagensVendedor> imagensvendedor = new ArrayList<>();
+
     public long getIdven() {
         return idven;
     }
@@ -192,7 +195,15 @@ public class Vendedor {
     this.ramoatv = ramoatv;
   }
 
-  @Override
+    public List<ImagensVendedor> getImagensVendedor() {
+        return imagensvendedor;
+    }
+
+    public void setImagensVendedor(List<ImagensVendedor> imagensvendedor) {
+        this.imagensvendedor = imagensvendedor;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

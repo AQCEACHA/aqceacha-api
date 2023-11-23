@@ -33,7 +33,6 @@ alter table imagensvendedor add constraint fk_vendedorimagens foreign key(idimg)
 
 alter table imagensvendedor add constraint fk_imagensvendedor foreign key(idven) references vendedor(idven);
 
-alter table
 
 --                                        Inserts
 

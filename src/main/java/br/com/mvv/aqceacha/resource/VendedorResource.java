@@ -1,8 +1,7 @@
 package br.com.mvv.aqceacha.resource;
 
-import br.com.mvv.aqceacha.model.Servico;
-import br.com.mvv.aqceacha.model.ServicoVendedor;
-import br.com.mvv.aqceacha.model.Vendedor;
+import br.com.mvv.aqceacha.model.*;
+import br.com.mvv.aqceacha.repository.ImagensRepository;
 import br.com.mvv.aqceacha.repository.ServicoRepository;
 import br.com.mvv.aqceacha.repository.VendedorRepository;
 import br.com.mvv.aqceacha.repository.filter.VendedorFilter;
@@ -26,6 +25,8 @@ public class VendedorResource {
     private VendedorRepository vendedorRepository;
   @Autowired
   private ServicoRepository servicoRepository;
+  @Autowired
+  private ImagensRepository imagensRepository;
 
     @GetMapping()
     public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
@@ -45,6 +46,12 @@ public class VendedorResource {
           item -> servicoRepository.findById(item.getServico().getIdserv()).get()
         );
 
+        List<ImagensVendedor> imagensVendedor = vendedor.getImagensVendedor();
+
+        Stream<Imagens> imagens = imagensVendedor.stream().map(
+                item -> imagensRepository.findById(item.getImagens().getIdimg()).get()
+        );
+
         VendedorDto vendedorDto = new VendedorDto(
           vendedor.getIdven(),
           vendedor.getNomeven(),
@@ -56,7 +63,8 @@ public class VendedorResource {
           vendedor.getImgven(),
           vendedor.getApelidoven(),
           vendedor.getEmailven(),
-          vendedor.getTelefoneven()
+          vendedor.getTelefoneven(),
+          imagens
         );
 
         return vendedorDto;
