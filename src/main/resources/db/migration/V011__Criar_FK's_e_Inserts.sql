@@ -27,6 +27,10 @@ alter table servicovendedor add constraint fk_servicovendedor foreign key(idserv
 
 alter table servicovendedor add constraint fk_vendedorservico foreign key(idven) references vendedor(idven);
 
+--Imagens
+
+alter table 
+
 --                                        Inserts
 
 -- Ramos
@@ -45,9 +49,9 @@ insert into ramoatv values (0, 'Médico', 'plus');
 
 -- Servico
 
-insert into servico values (0, 'Dente', 100.00, 'foto', 1);
+insert into servico values (0, 'Dente', 100.00, 'https://centroconscientia.com.br/wp-content/uploads/2019/08/alexander-kopelman-4fa6.jpg', 1);
 
-insert into servico values (0, 'Formatação', 50.00, 'foto', 2);
+insert into servico values (0, 'Formatação', 50.00, 'https://www.oficinadanet.com.br/imagens/post/14237/manutencao_pc.jpg', 2);
 
 
 -- Vendedor
@@ -74,6 +78,8 @@ insert into favorito values (0, 2);
 -- Clientes
 
 insert into cliente values (0, 'Mariana Rove', 'foto', 'mariana@email.com', '2112', 'Mari', '2005-12-21', '(14)998030507', 'R. papapa', '11', null ,'121212', 1, 1);
+
+-- Imagens
 
 
 
