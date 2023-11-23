@@ -2,6 +2,8 @@ package br.com.mvv.aqceacha.model;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -18,6 +20,9 @@ public class Favorito {
     @JoinColumn(name = "idven")
     private Vendedor vendedor;
 
+    @OneToMany(mappedBy = "favorito")
+    private List<FavoritoCliente> favoritoCliente = new ArrayList<>();
+
     public long getIdfav() {
         return idfav;
     }
@@ -32,6 +37,14 @@ public class Favorito {
 
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
+    }
+
+    public List<FavoritoCliente> getFavoritoCliente() {
+        return favoritoCliente;
+    }
+
+    public void setFavoritoCliente(List<FavoritoCliente> favoritoCliente) {
+        this.favoritoCliente = favoritoCliente;
     }
 
     @Override

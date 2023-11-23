@@ -4,11 +4,6 @@
 
 alter table cliente add constraint fk_cliente_cidade foreign key(idcidade) references cidade(idcidade);
 
-alter table cliente add constraint fk_cliente_favorito foreign key(idfav) references favorito(idfav);
-
--- Favoritos
-
-alter table favorito add constraint fk_favorito_vendedor foreign key(idven) references vendedor(idven);
 
 -- Vendedor
 
@@ -27,11 +22,21 @@ alter table servicovendedor add constraint fk_servicovendedor foreign key(idserv
 
 alter table servicovendedor add constraint fk_vendedorservico foreign key(idven) references vendedor(idven);
 
---Imagens Vendedor
+-- Imagens Vendedor
 
 alter table imagensvendedor add constraint fk_vendedorimagens foreign key(idimg) references imagens(idimg);
 
 alter table imagensvendedor add constraint fk_imagensvendedor foreign key(idven) references vendedor(idven);
+
+-- Favoritos
+
+alter table favorito add constraint fk_favorito_vendedor foreign key(idven) references vendedor(idven);
+
+-- Favorito Cliente
+
+alter table favoritocliente add constraint fk_favoritocliente foreign key (idfav) references favorito(idfav);
+
+alter table favoritocliente add constraint fk_clientefavorito foreign key (idcli) references cliente(idcli);
 
 
 --                                        Inserts
@@ -65,12 +70,9 @@ insert into vendedor values (0, 'Gabriela Silva', 'https://img.quizur.com/f/img6
 
 insert into vendedor values (0, 'Vinicius Nogueira', 'https://kanto.legiaodosherois.com.br/w760-h398-cfill/wp-content/uploads/2019/07/legiao_Dk5jiZKIvYP_nhEcd3JqFR6watUAeslCBGLpXz1MuW.png.webp', null, 'vini@email.com', '2121', 'Vini', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 2, 2);
 
+-- Clientes
 
--- Servico Vendedor
-
-insert into servicovendedor values (0, 1, 1);
-
-insert into servicovendedor values (0, 2, 1);
+insert into cliente values (0, 'Mariana Rove', 'foto', 'mariana@email.com', '2112', 'Mari', '2005-12-21', '(14)998030507', 'R. papapa', '11', null ,'121212', 1);
 
 -- Favorito
 
@@ -78,9 +80,18 @@ insert into favorito values (0, 1);
 
 insert into favorito values (0, 2);
 
--- Clientes
+-- Servico Vendedor
 
-insert into cliente values (0, 'Mariana Rove', 'foto', 'mariana@email.com', '2112', 'Mari', '2005-12-21', '(14)998030507', 'R. papapa', '11', null ,'121212', 1, 1);
+insert into servicovendedor values (0, 1, 1);
+
+insert into servicovendedor values (0, 2, 1);
+
+
+-- Favorito Cliente
+
+insert into favoritocliente values (0, 1, 1);
+
+insert into favoritocliente values (0, 2, 1);
 
 -- Imagens
 

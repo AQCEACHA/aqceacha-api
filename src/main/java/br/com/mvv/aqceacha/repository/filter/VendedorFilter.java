@@ -10,8 +10,6 @@ public class VendedorFilter {
 
     private String uf;
 
-    private String nomeserv;
-
     private Double star;
 
     public String getNomeven() {
@@ -46,13 +44,6 @@ public class VendedorFilter {
         this.uf = uf;
     }
 
-    public String getNomeserv() {
-        return nomeserv;
-    }
-
-    public void setNomeserv(String nomeserv) {
-        this.nomeserv = nomeserv;
-    }
 
   public Double getStar() {
     return star;

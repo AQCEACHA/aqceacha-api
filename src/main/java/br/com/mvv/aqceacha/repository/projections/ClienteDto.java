@@ -1,5 +1,10 @@
 package br.com.mvv.aqceacha.repository.projections;
 
+import br.com.mvv.aqceacha.model.Favorito;
+import br.com.mvv.aqceacha.model.Imagens;
+
+import java.util.stream.Stream;
+
 public class ClienteDto {
     private Long idcli;
 
@@ -9,17 +14,16 @@ public class ClienteDto {
 
     private String uf;
 
-    private String nomeven;
+    private Stream<Favorito> favorito;
 
-    private String imgven;
-
-    public ClienteDto(Long idcli, String nomecli, String nomecidade, String uf, String nomeven, String imgven) {
+    public ClienteDto(Long idcli, String nomecli, String nomecidade, String uf, Stream<Favorito> favorito
+    ) {
         this.idcli = idcli;
         this.nomecli = nomecli;
         this.nomecidade = nomecidade;
         this.uf = uf;
-        this.nomeven = nomeven;
-        this.imgven = imgven;
+        this.favorito = favorito;
+
     }
 
     public Long getIdcli() {
@@ -54,19 +58,11 @@ public class ClienteDto {
         this.uf = uf;
     }
 
-    public String getNomeven() {
-        return nomeven;
+    public Stream<Favorito> getFavorito() {
+        return favorito;
     }
 
-    public void setNomeven(String nomeven) {
-        this.nomeven = nomeven;
+    public void setFavorito(Stream<Favorito> favorito) {
+        this.favorito = favorito;
     }
-
-  public String getImgven() {
-    return imgven;
-  }
-
-  public void setImgven(String imgven) {
-    this.imgven = imgven;
-  }
 }

@@ -33,9 +33,8 @@ public class Cliente {
     @JoinColumn(name = "idcidade")
     private Cidade cidade;
 
-    @ManyToOne
-    @JoinColumn(name = "idfav")
-    private Favorito favorito;
+    @OneToMany(mappedBy = "cliente")
+    private List<FavoritoCliente> favoritoCliente = new ArrayList<>();
 
     public long getIdcli() {
         return idcli;
@@ -134,12 +133,12 @@ public class Cliente {
         this.numerocli = numerocli;
     }
 
-    public Favorito getFavorito() {
-        return favorito;
+    public List<FavoritoCliente> getFavoritoCliente() {
+        return favoritoCliente;
     }
 
-    public void setFavorito(Favorito favorito) {
-        this.favorito = favorito;
+    public void setFavoritoCliente(List<FavoritoCliente> favoritoCliente) {
+        this.favoritoCliente = favoritoCliente;
     }
 
     @Override
