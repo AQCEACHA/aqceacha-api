@@ -27,9 +27,13 @@ alter table servicovendedor add constraint fk_servicovendedor foreign key(idserv
 
 alter table servicovendedor add constraint fk_vendedorservico foreign key(idven) references vendedor(idven);
 
---Imagens
+--Imagens Vendedor
 
-alter table 
+alter table imagensvendedor add constraint fk_vendedorimagens foreign key(idimg) references imagens(idimg);
+
+alter table imagensvendedor add constraint fk_imagensvendedor foreign key(idven) references vendedor(idven);
+
+alter table
 
 --                                        Inserts
 
@@ -81,6 +85,13 @@ insert into cliente values (0, 'Mariana Rove', 'foto', 'mariana@email.com', '211
 
 -- Imagens
 
+insert into imagens values (0, 'https://blog.odontocompany.com/wp-content/uploads/2019/01/original_jamiel_2.jpg');
 
+insert into imagens values (0, 'https://i.ytimg.com/vi/-HToapdUazs/maxresdefault.jpg');
 
+-- Imagens Vendedor
+
+insert into imagensvendedor values (0, 1, 1);
+
+insert into imagensvendedor values (0, 2, 1);
 
