@@ -31,9 +31,6 @@ public class Servico {
     @JoinColumn(name = "idramo")
     private RamoAtv ramoAtv;
 
-  @OneToMany(mappedBy = "servico")
-  private List<ImagensServico> imagensServicos = new ArrayList<>();
-
     public long getIdserv() {
         return idserv;
     }
@@ -80,14 +77,6 @@ public class Servico {
 
   public void setServicovendedor(List<ServicoVendedor> servicovendedor) {
     this.servicovendedor = servicovendedor;
-  }
-
-  public List<ImagensServico> getImagensServicos() {
-    return imagensServicos;
-  }
-
-  public void setImagensServicos(List<ImagensServico> imagensServicos) {
-    this.imagensServicos = imagensServicos;
   }
 
   @Override
