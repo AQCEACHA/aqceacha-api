@@ -35,7 +35,6 @@ public class VendedorDto {
 
     private List<Imagens> imagens;
 
-
     public VendedorDto(Long idven, String nomeven, String ramo, String nomecidade, String uf, Double star, List<Servico> servicos, String imgven, String apelidoven, String emailven, String telefoneven, List<Imagens> imagens) {
         this.idven = idven;
         this.nomeven = nomeven;
