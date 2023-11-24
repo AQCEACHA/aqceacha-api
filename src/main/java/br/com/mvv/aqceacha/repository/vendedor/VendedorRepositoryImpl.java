@@ -37,8 +37,20 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
                 root.get("ramoatv").get("ramo"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.get("star")
+                root.get("star"),
+                root.join("servicovendedor").get("servico"),
+                root.get("imgven"),
+                root.get("apelidoven"),
+                root.get("emailven"),
+                root.get("telefoneven"),
+                root.join("imagensvendedor").get("imagens")
         ));
+
+        //        this.imgven = imgven;
+      //        this.apelidoven = apelidoven;
+      //        this.emailven= emailven;
+      //        this.telefoneven = telefoneven;
+      //        this.imagens = imagens;
 
         Predicate[] predicates = criarRestricoes(vendedorFilter, builder, root);
         criteria.where(predicates);
@@ -46,8 +58,16 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("ramoatv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("star")));
+        criteria.orderBy(builder.asc(root.join("servicovendedor").get("servico")));
+      criteria.orderBy(builder.asc(root.get("imgven")));
+      criteria.orderBy(builder.asc(root.get("apelidoven")));
+      criteria.orderBy(builder.asc(root.get("emailven")));
+      criteria.orderBy(builder.asc(root.get("telefoneven")));
+      criteria.orderBy(builder.asc(root.join("imagensvendedor").get("imagens")));
 
-        TypedQuery<VendedorDto> query = manager.createQuery(criteria);
+
+
+      TypedQuery<VendedorDto> query = manager.createQuery(criteria);
         adicionarRestricoes(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(vendedorFilter));
@@ -65,6 +85,12 @@ public class VendedorRepositoryImpl implements VendedorRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
         criteria.orderBy(builder.asc(root.get("star")));
+      criteria.orderBy(builder.asc(root.join("servicovendedor").get("servico")));
+      criteria.orderBy(builder.asc(root.get("imgven")));
+      criteria.orderBy(builder.asc(root.get("apelidoven")));
+      criteria.orderBy(builder.asc(root.get("emailven")));
+      criteria.orderBy(builder.asc(root.get("telefoneven")));
+      criteria.orderBy(builder.asc(root.join("imagensvendedor").get("imagens")));
 
         criteria.select(builder.count(root));
 

@@ -20,10 +20,12 @@ import java.util.stream.Stream;
 @RequestMapping("/vendedor")
 public class VendedorResource {
 
-    @Autowired
-    private VendedorRepository vendedorRepository;
+  @Autowired
+  private VendedorRepository vendedorRepository;
+
   @Autowired
   private ServicoRepository servicoRepository;
+
   @Autowired
   private ImagensRepository imagensRepository;
 
