@@ -135,4 +135,9 @@ public class VendedorResource {
     @CrossOrigin("*")
     @GetMapping("/todos")
     public List<Vendedor> listarTodosVendedor() {return vendedorRepository.findAll();}
+
+    @PostMapping("/criar")
+  public Vendedor criarVendedor(@RequestBody Vendedor vendedor){
+      return vendedorRepository.save(vendedor);
+    }
 }
