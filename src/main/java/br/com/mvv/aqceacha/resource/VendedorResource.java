@@ -1,9 +1,7 @@
 package br.com.mvv.aqceacha.resource;
 
 import br.com.mvv.aqceacha.model.*;
-import br.com.mvv.aqceacha.repository.ImagensRepository;
-import br.com.mvv.aqceacha.repository.ServicoRepository;
-import br.com.mvv.aqceacha.repository.VendedorRepository;
+import br.com.mvv.aqceacha.repository.*;
 import br.com.mvv.aqceacha.repository.filter.VendedorFilter;
 import br.com.mvv.aqceacha.repository.projections.VendedorDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,15 @@ public class VendedorResource {
   private ServicoRepository servicoRepository;
   @Autowired
   private ImagensRepository imagensRepository;
+
+  @Autowired
+  private FavoritoClienteRepository favoritoClienteRepository;
+
+  @Autowired
+  private FavoritoRepository favoritoRepository;
+
+  @Autowired
+  private ClienteRepository clienteRepository;
 
     @GetMapping()
     public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
@@ -71,6 +78,54 @@ public class VendedorResource {
       }
       return null;
     }
+
+    @PostMapping("/favorito/{id}")
+    public void adicionarFavorito(@PathVariable Long idven){
+      Optional<Cliente> clienteOptional = clienteRepository.findById(1L);
+      if (clienteOptional.isPresent()) {
+        Cliente cliente = clienteOptional.get();
+        List<FavoritoCliente> favoritos = cliente.getFavoritoCliente();
+        Vendedor vendedor = vendedorRepository.findById(idven).get();
+        Favorito favorito = new Favorito();
+        favorito.setVendedor(vendedor);
+        favorito = favoritoRepository.save(favorito);
+        FavoritoCliente favoritoCliente = new FavoritoCliente();
+        favoritoCliente.setFavorito(favorito);
+        favoritoCliente.setCliente(cliente);
+        favoritoClienteRepository.save(favoritoCliente);
+      } else {
+        return;
+      }
+    }
+
+  @GetMapping("/favorito/existe/{id}")
+  public boolean verificarFavorito(@PathVariable Long idven){
+    Cliente cliente = clienteRepository.findById(1L).get();
+    Vendedor vendedor = vendedorRepository.findById(idven).get();
+    Stream<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
+            favoritoCliente -> favoritoCliente.getFavorito().getVendedor().equals(vendedor)
+    );
+    if (favoritos.count() >= 1) {
+      return true;
+    }
+    return false;
+  }
+
+  @PostMapping("favorito/remover/{id}")
+  public void removerFavorito(@PathVariable Long idven) {
+    Cliente cliente = clienteRepository.findById(1L).get();
+    Vendedor vendedor = vendedorRepository.findById(idven).get();
+    List<FavoritoCliente> favoritos = cliente.getFavoritoCliente();
+    favoritos.forEach(
+            favoritocliente -> {
+              Favorito favorito = favoritoRepository.findById(favoritocliente.getIdfavcli()).get();
+              if (favorito.getVendedor().equals(vendedor)) {
+                favoritoRepository.delete(favorito);
+                favoritoClienteRepository.delete(favoritocliente);
+              }
+            }
+    );
+  }
 
     @CrossOrigin("*")
     @GetMapping("/todos")
