@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
@@ -21,6 +22,8 @@ public class ClienteResource {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+
 
     @Autowired
     private FavoritoRepository favoritoRepository;
@@ -39,9 +42,9 @@ public class ClienteResource {
 
             List<FavoritoCliente> favoritoCliente = cliente.getFavoritoCliente();
 
-            Stream<Favorito> favorito = favoritoCliente.stream().map(
+            List<Favorito> favorito = favoritoCliente.stream().map(
                     item -> favoritoRepository.findById(item.getFavorito().getIdfav()).get()
-            );
+            ).collect(Collectors.toList());
 
             ClienteDto clienteDto = new ClienteDto(
                     cliente.getIdcli(),
