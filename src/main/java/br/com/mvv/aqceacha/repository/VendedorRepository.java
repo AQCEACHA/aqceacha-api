@@ -7,8 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VendedorRepository extends JpaRepository<Vendedor, Long>, VendedorRepositoryQuery {
-
-    Vendedor findByFavoritoIdfav(Long idfav);
-
-
 }

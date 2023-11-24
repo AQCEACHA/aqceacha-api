@@ -50,9 +50,6 @@ public class Vendedor {
     @OneToMany(mappedBy = "vendedor")
     private List<ImagensVendedor> imagensvendedor = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vendedor")
-    private List<Favorito> favorito = new ArrayList<>();
-
     public long getIdven() {
         return idven;
     }
