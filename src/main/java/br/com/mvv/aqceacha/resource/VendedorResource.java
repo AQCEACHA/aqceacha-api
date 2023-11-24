@@ -80,7 +80,7 @@ public class VendedorResource {
       return null;
     }
 
-    @PostMapping("/favorito/{id}")
+    @PostMapping("/favorito/{idven}")
     public void adicionarFavorito(@PathVariable Long idven){
       Optional<Cliente> clienteOptional = clienteRepository.findById(1L);
       if (clienteOptional.isPresent()) {
@@ -99,7 +99,7 @@ public class VendedorResource {
       }
     }
 
-  @GetMapping("/favorito/existe/{id}")
+  @GetMapping("/favorito/existe/{idven}")
   public boolean verificarFavorito(@PathVariable Long idven){
     Cliente cliente = clienteRepository.findById(1L).get();
     Vendedor vendedor = vendedorRepository.findById(idven).get();
@@ -112,20 +112,25 @@ public class VendedorResource {
     return false;
   }
 
-  @PostMapping("favorito/remover/{id}")
+  @PostMapping("/favorito/remover/{idven}")
   public void removerFavorito(@PathVariable Long idven) {
     Cliente cliente = clienteRepository.findById(1L).get();
     Vendedor vendedor = vendedorRepository.findById(idven).get();
     List<FavoritoCliente> favoritos = cliente.getFavoritoCliente();
     favoritos.forEach(
             favoritocliente -> {
-              Favorito favorito = favoritoRepository.findById(favoritocliente.getIdfavcli()).get();
+              Favorito favorito = favoritocliente.getFavorito();
               if (favorito.getVendedor().equals(vendedor)) {
-                favoritoRepository.delete(favorito);
                 favoritoClienteRepository.delete(favoritocliente);
+                favoritoRepository.delete(favorito);
               }
             }
     );
+  }
+
+  @GetMapping("/favorito/get/{idfav}")
+  public Vendedor getPorIdFavorito(@PathVariable Long idfav) {
+    return vendedorRepository.findByFavoritoIdfav(idfav);
   }
 
     @CrossOrigin("*")
