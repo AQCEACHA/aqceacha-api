@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
@@ -50,15 +49,15 @@ public class VendedorResource {
 
         List<ServicoVendedor> servicoVendedor = vendedor.getServicosVendedor();
 
-        List<Servico> servicos = servicoVendedor.stream().map(
+        Stream<Servico> servicos = servicoVendedor.stream().map(
           item -> servicoRepository.findById(item.getServico().getIdserv()).get()
-        ).collect(Collectors.toList());
+        );
 
         List<ImagensVendedor> imagensVendedor = vendedor.getImagensVendedor();
 
-        List<Imagens> imagens = imagensVendedor.stream().map(
+        Stream<Imagens> imagens = imagensVendedor.stream().map(
                 item -> imagensRepository.findById(item.getImagens().getIdimg()).get()
-        ).collect(Collectors.toList());
+        );
 
         VendedorDto vendedorDto = new VendedorDto(
           vendedor.getIdven(),
@@ -103,10 +102,10 @@ public class VendedorResource {
   public boolean verificarFavorito(@PathVariable Long idven){
     Cliente cliente = clienteRepository.findById(1L).get();
     Vendedor vendedor = vendedorRepository.findById(idven).get();
-    List<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
+    Stream<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
             favoritoCliente -> favoritoCliente.getFavorito().getVendedor().equals(vendedor)
-    ).collect(Collectors.toList());
-    if (favoritos.stream().count() >= 1) {
+    );
+    if (favoritos.count() >= 1) {
       return true;
     }
     return false;
