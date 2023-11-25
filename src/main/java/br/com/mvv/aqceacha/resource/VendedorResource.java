@@ -13,16 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/vendedor")
 public class VendedorResource {
 
-    @Autowired
-    private VendedorRepository vendedorRepository;
+  @Autowired
+  private VendedorRepository vendedorRepository;
+
   @Autowired
   private ServicoRepository servicoRepository;
+
   @Autowired
   private ImagensRepository imagensRepository;
 
@@ -49,15 +52,15 @@ public class VendedorResource {
 
         List<ServicoVendedor> servicoVendedor = vendedor.getServicosVendedor();
 
-        Stream<Servico> servicos = servicoVendedor.stream().map(
+        List<Servico> servicos = servicoVendedor.stream().map(
           item -> servicoRepository.findById(item.getServico().getIdserv()).get()
-        );
+        ).collect(Collectors.toList());
 
         List<ImagensVendedor> imagensVendedor = vendedor.getImagensVendedor();
 
-        Stream<Imagens> imagens = imagensVendedor.stream().map(
+        List<Imagens> imagens = imagensVendedor.stream().map(
                 item -> imagensRepository.findById(item.getImagens().getIdimg()).get()
-        );
+        ).collect(Collectors.toList());
 
         VendedorDto vendedorDto = new VendedorDto(
           vendedor.getIdven(),
@@ -102,10 +105,10 @@ public class VendedorResource {
   public boolean verificarFavorito(@PathVariable Long idven){
     Cliente cliente = clienteRepository.findById(1L).get();
     Vendedor vendedor = vendedorRepository.findById(idven).get();
-    Stream<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
+    List<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
             favoritoCliente -> favoritoCliente.getFavorito().getVendedor().equals(vendedor)
-    );
-    if (favoritos.count() >= 1) {
+    ).collect(Collectors.toList());
+    if (favoritos.stream().count() >= 1) {
       return true;
     }
     return false;
