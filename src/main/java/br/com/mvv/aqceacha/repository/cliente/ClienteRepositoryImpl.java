@@ -35,8 +35,8 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                 root.get("nomecli"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.join("favoritoCliente").get("favorito")));
-
+                root.get("favorito").get("vendedor").get("nomeven"),
+                root.get("favorito").get("vendedor").get("imgven")));
 
 
       Predicate[] predicates = criarRestricoes(clienteFilter, builder, root);
@@ -44,8 +44,8 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("nomecli")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
-        criteria.orderBy(builder.asc(root.join("favoritoCliente").get("favorito")));
-
+        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("imgven")));
 
 
 
@@ -65,8 +65,8 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("nomecli")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
-        criteria.orderBy(builder.asc(root.join("favoritoCliente").get("favorito")));
-
+        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("nomeven")));
+        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("imgven")));
 
 
       criteria.select(builder.count(root));
@@ -102,7 +102,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                     "%" + clienteFilter.getUf().toLowerCase() + "%" ));
         }
         if (!StringUtils.isEmpty(clienteFilter.getNomeven())){
-            predicates.add(builder.like(builder.lower(root.join("favoritoCliente").get("favorito")),
+            predicates.add(builder.like(builder.lower(root.get("favorito").get("vendedor").get("nomeven")),
                     "%" + clienteFilter.getNomeven().toLowerCase() + "%" ));
         }
 
