@@ -4,6 +4,7 @@ import br.com.mvv.aqceacha.model.*;
 import br.com.mvv.aqceacha.repository.*;
 import br.com.mvv.aqceacha.repository.filter.VendedorFilter;
 import br.com.mvv.aqceacha.repository.projections.VendedorDto;
+import br.com.mvv.aqceacha.repository.projections.VendedorRegistroDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +38,12 @@ public class VendedorResource {
 
   @Autowired
   private ClienteRepository clienteRepository;
+
+  @Autowired
+  private CidadeRepository cidadeRepository;
+
+  @Autowired
+  private RamoAtvRepository ramoAtvRepository;
 
   @GetMapping()
   public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
@@ -138,4 +145,34 @@ public class VendedorResource {
   @CrossOrigin("*")
   @GetMapping("/todos")
   public List<Vendedor> listarTodosVendedor() {return vendedorRepository.findAll();}
+
+  @CrossOrigin("*")
+  @PostMapping("/criar")
+  public Vendedor criarVendedor(@RequestBody VendedorRegistroDto vendedorRegistroDto){
+
+    System.out.println("print teste");
+
+    Cidade cidade = cidadeRepository.findById(vendedorRegistroDto.getIdcidade()).get();
+    RamoAtv ramoAtv = ramoAtvRepository.findById(vendedorRegistroDto.getIdramo()).get();
+
+    Vendedor vendedor = new Vendedor();
+
+    vendedor.setNomeven(vendedorRegistroDto.getNomeven());
+    vendedor.setEmailven(vendedorRegistroDto.getEmailven());
+    vendedor.setSenhaven(vendedorRegistroDto.getSenhaven());
+    vendedor.setApelidoven(vendedorRegistroDto.getApelidoven());
+    vendedor.setNascimentoven(vendedorRegistroDto.getNascimentoven());
+    vendedor.setTelefoneven(vendedorRegistroDto.getTelefoneven());
+    vendedor.setEnderecoven(vendedorRegistroDto.getEnderecoven());
+    vendedor.setNumeroven(vendedorRegistroDto.getNumeroven());
+    vendedor.setComplementoven(vendedorRegistroDto.getComplementoven());
+    vendedor.setCnpj(vendedorRegistroDto.getCnpj());
+    vendedor.setDocumentoven(vendedorRegistroDto.getDocumentoven());
+
+    vendedor.setCidade(cidade);
+    vendedor.setRamoatv(ramoAtv);
+
+    return vendedorRepository.save(vendedor);
+  }
 }
+
