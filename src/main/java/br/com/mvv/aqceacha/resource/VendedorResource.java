@@ -13,16 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/vendedor")
 public class VendedorResource {
 
-    @Autowired
-    private VendedorRepository vendedorRepository;
+  @Autowired
+  private VendedorRepository vendedorRepository;
+
   @Autowired
   private ServicoRepository servicoRepository;
+
   @Autowired
   private ImagensRepository imagensRepository;
 
@@ -35,77 +38,77 @@ public class VendedorResource {
   @Autowired
   private ClienteRepository clienteRepository;
 
-    @GetMapping()
-    public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
-        return vendedorRepository.filtrar(vendedorFilter, pageable);
+  @GetMapping()
+  public Page<VendedorDto> pesquisar(VendedorFilter vendedorFilter, Pageable pageable){
+    return vendedorRepository.filtrar(vendedorFilter, pageable);
+  }
+
+  @CrossOrigin("*")
+  @GetMapping("/{id}")
+  public VendedorDto getById(@PathVariable Long id) {
+    Optional<Vendedor> vendedorOptional = vendedorRepository.findById(id);
+    if (vendedorOptional.isPresent()) {
+      Vendedor vendedor = vendedorOptional.get();
+
+      List<ServicoVendedor> servicoVendedor = vendedor.getServicosVendedor();
+
+      List<Servico> servicos = servicoVendedor.stream().map(
+              item -> servicoRepository.findById(item.getServico().getIdserv()).get()
+      ).collect(Collectors.toList());
+
+      List<ImagensVendedor> imagensVendedor = vendedor.getImagensVendedor();
+
+      List<Imagens> imagens = imagensVendedor.stream().map(
+              item -> imagensRepository.findById(item.getImagens().getIdimg()).get()
+      ).collect(Collectors.toList());
+
+      VendedorDto vendedorDto = new VendedorDto(
+              vendedor.getIdven(),
+              vendedor.getNomeven(),
+              vendedor.getRamoatv().getRamo(),
+              vendedor.getCidade().getNomecidade(),
+              vendedor.getCidade().getUf(),
+              vendedor.getStar(),
+              servicos,
+              vendedor.getImgven(),
+              vendedor.getApelidoven(),
+              vendedor.getEmailven(),
+              vendedor.getTelefoneven(),
+              imagens
+      );
+
+      return vendedorDto;
     }
+    return null;
+  }
 
-    @CrossOrigin("*")
-    @GetMapping("/{id}")
-    public VendedorDto getById(@PathVariable Long id) {
-      Optional<Vendedor> vendedorOptional = vendedorRepository.findById(id);
-      if (vendedorOptional.isPresent()) {
-        Vendedor vendedor = vendedorOptional.get();
-
-        List<ServicoVendedor> servicoVendedor = vendedor.getServicosVendedor();
-
-        Stream<Servico> servicos = servicoVendedor.stream().map(
-          item -> servicoRepository.findById(item.getServico().getIdserv()).get()
-        );
-
-        List<ImagensVendedor> imagensVendedor = vendedor.getImagensVendedor();
-
-        Stream<Imagens> imagens = imagensVendedor.stream().map(
-                item -> imagensRepository.findById(item.getImagens().getIdimg()).get()
-        );
-
-        VendedorDto vendedorDto = new VendedorDto(
-          vendedor.getIdven(),
-          vendedor.getNomeven(),
-          vendedor.getRamoatv().getRamo(),
-          vendedor.getCidade().getNomecidade(),
-          vendedor.getCidade().getUf(),
-          vendedor.getStar(),
-          servicos,
-          vendedor.getImgven(),
-          vendedor.getApelidoven(),
-          vendedor.getEmailven(),
-          vendedor.getTelefoneven(),
-          imagens
-        );
-
-        return vendedorDto;
-      }
-      return null;
+  @PostMapping("/favorito/{idven}")
+  public void adicionarFavorito(@PathVariable Long idven){
+    Optional<Cliente> clienteOptional = clienteRepository.findById(1L);
+    if (clienteOptional.isPresent()) {
+      Cliente cliente = clienteOptional.get();
+      List<FavoritoCliente> favoritos = cliente.getFavoritoCliente();
+      Vendedor vendedor = vendedorRepository.findById(idven).get();
+      Favorito favorito = new Favorito();
+      favorito.setVendedor(vendedor);
+      favorito = favoritoRepository.save(favorito);
+      FavoritoCliente favoritoCliente = new FavoritoCliente();
+      favoritoCliente.setFavorito(favorito);
+      favoritoCliente.setCliente(cliente);
+      favoritoClienteRepository.save(favoritoCliente);
+    } else {
+      return;
     }
-
-    @PostMapping("/favorito/{idven}")
-    public void adicionarFavorito(@PathVariable Long idven){
-      Optional<Cliente> clienteOptional = clienteRepository.findById(1L);
-      if (clienteOptional.isPresent()) {
-        Cliente cliente = clienteOptional.get();
-        List<FavoritoCliente> favoritos = cliente.getFavoritoCliente();
-        Vendedor vendedor = vendedorRepository.findById(idven).get();
-        Favorito favorito = new Favorito();
-        favorito.setVendedor(vendedor);
-        favorito = favoritoRepository.save(favorito);
-        FavoritoCliente favoritoCliente = new FavoritoCliente();
-        favoritoCliente.setFavorito(favorito);
-        favoritoCliente.setCliente(cliente);
-        favoritoClienteRepository.save(favoritoCliente);
-      } else {
-        return;
-      }
-    }
+  }
 
   @GetMapping("/favorito/existe/{idven}")
   public boolean verificarFavorito(@PathVariable Long idven){
     Cliente cliente = clienteRepository.findById(1L).get();
     Vendedor vendedor = vendedorRepository.findById(idven).get();
-    Stream<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
+    List<FavoritoCliente> favoritos = cliente.getFavoritoCliente().stream().filter(
             favoritoCliente -> favoritoCliente.getFavorito().getVendedor().equals(vendedor)
-    );
-    if (favoritos.count() >= 1) {
+    ).collect(Collectors.toList());
+    if (favoritos.stream().count() >= 1) {
       return true;
     }
     return false;
@@ -132,7 +135,7 @@ public class VendedorResource {
     return vendedorRepository.findByFavoritoIdfav(idfav);
   }
 
-    @CrossOrigin("*")
-    @GetMapping("/todos")
-    public List<Vendedor> listarTodosVendedor() {return vendedorRepository.findAll();}
+  @CrossOrigin("*")
+  @GetMapping("/todos")
+  public List<Vendedor> listarTodosVendedor() {return vendedorRepository.findAll();}
 }

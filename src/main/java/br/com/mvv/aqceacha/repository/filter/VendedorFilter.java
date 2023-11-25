@@ -1,5 +1,10 @@
 package br.com.mvv.aqceacha.repository.filter;
 
+import br.com.mvv.aqceacha.model.Imagens;
+import br.com.mvv.aqceacha.model.Servico;
+
+import java.util.stream.Stream;
+
 public class VendedorFilter {
 
     private String nomeven;
@@ -11,6 +16,18 @@ public class VendedorFilter {
     private String uf;
 
     private Double star;
+    private Stream<Servico> servicos;
+
+    private String imgven;
+
+    private String apelidoven;
+
+    private String emailven;
+
+    private String telefoneven;
+
+    private Stream<Imagens> imagens;
+
 
     public String getNomeven() {
         return nomeven;
@@ -52,4 +69,52 @@ public class VendedorFilter {
   public void setStar(Double star) {
     this.star = star;
   }
+
+    public Stream<Servico> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(Stream<Servico> servicos) {
+        this.servicos = servicos;
+    }
+
+    public String getImgven() {
+        return imgven;
+    }
+
+    public void setImgven(String imgven) {
+        this.imgven = imgven;
+    }
+
+    public String getApelidoven() {
+        return apelidoven;
+    }
+
+    public void setApelidoven(String apelidoven) {
+        this.apelidoven = apelidoven;
+    }
+
+    public String getEmailven() {
+        return emailven;
+    }
+
+    public void setEmailven(String emailven) {
+        this.emailven = emailven;
+    }
+
+    public String getTelefoneven() {
+        return telefoneven;
+    }
+
+    public void setTelefoneven(String telefoneven) {
+        this.telefoneven = telefoneven;
+    }
+
+    public Stream<Imagens> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(Stream<Imagens> imagens) {
+        this.imagens = imagens;
+    }
 }

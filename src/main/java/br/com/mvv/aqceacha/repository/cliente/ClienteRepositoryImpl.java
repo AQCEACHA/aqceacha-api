@@ -35,21 +35,21 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                 root.get("nomecli"),
                 root.get("cidade").get("nomecidade"),
                 root.get("cidade").get("uf"),
-                root.get("favorito").get("vendedor").get("nomeven"),
-                root.get("favorito").get("vendedor").get("imgven")));
+                root.join("favoritoCliente").get("favorito")));
 
 
-      Predicate[] predicates = criarRestricoes(clienteFilter, builder, root);
+
+        Predicate[] predicates = criarRestricoes(clienteFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomecli")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
-        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("nomeven")));
-        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("imgven")));
+        criteria.orderBy(builder.asc(root.join("favoritoCliente").get("favorito")));
 
 
 
-      TypedQuery<ClienteDto> query = manager.createQuery(criteria);
+
+        TypedQuery<ClienteDto> query = manager.createQuery(criteria);
         adicionarRestricoes(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(clienteFilter));
@@ -65,11 +65,11 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
         criteria.orderBy(builder.asc(root.get("nomecli")));
         criteria.orderBy(builder.asc(root.get("cidade").get("nomecidade")));
         criteria.orderBy(builder.asc(root.get("cidade").get("uf")));
-        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("nomeven")));
-        criteria.orderBy(builder.asc(root.get("favorito").get("vendedor").get("imgven")));
+        criteria.orderBy(builder.asc(root.join("favoritoCliente").get("favorito")));
 
 
-      criteria.select(builder.count(root));
+
+        criteria.select(builder.count(root));
 
         return manager.createQuery(criteria).getSingleResult();
 
@@ -102,7 +102,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryQuery{
                     "%" + clienteFilter.getUf().toLowerCase() + "%" ));
         }
         if (!StringUtils.isEmpty(clienteFilter.getNomeven())){
-            predicates.add(builder.like(builder.lower(root.get("favorito").get("vendedor").get("nomeven")),
+            predicates.add(builder.like(builder.lower(root.join("favoritoCliente").get("favorito")),
                     "%" + clienteFilter.getNomeven().toLowerCase() + "%" ));
         }
 
