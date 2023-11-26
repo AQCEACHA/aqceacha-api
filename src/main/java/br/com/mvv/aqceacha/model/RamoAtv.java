@@ -23,7 +23,7 @@ public class RamoAtv {
 
     @JsonIgnore
     @OneToMany(mappedBy = "ramoatv")
-    private List<RamoAtv> ramoatv = new ArrayList<>();
+    private List<Vendedor> vendedor = new ArrayList<>();
 
     public long getIdramo() {
         return idramo;
@@ -41,21 +41,24 @@ public class RamoAtv {
         this.ramo = ramo;
     }
 
-    public List<RamoAtv> getRamoatv() {
-        return ramoatv;
+
+    public List<Vendedor> getVendedor() {
+        return vendedor;
     }
 
-    public void setRamoatv(List<RamoAtv> ramoatv) {
-        this.ramoatv = ramoatv;
+    public void setVendedor(List<Vendedor> vendedor) {
+        this.vendedor = vendedor;
     }
 
-  public String getIconramo() {
+    public String getIconramo() {
     return iconramo;
   }
 
   public void setIconramo(String iconramo) {
     this.iconramo = iconramo;
   }
+
+
 
   @Override
     public boolean equals(Object o) {

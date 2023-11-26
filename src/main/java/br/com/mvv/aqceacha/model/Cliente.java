@@ -29,10 +29,12 @@ public class Cliente {
     private String complementocli;
     private String documentocli;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idcidade")
     private Cidade cidade;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<FavoritoCliente> favoritoCliente = new ArrayList<>();
 
@@ -140,6 +142,8 @@ public class Cliente {
     public void setFavoritoCliente(List<FavoritoCliente> favoritoCliente) {
         this.favoritoCliente = favoritoCliente;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

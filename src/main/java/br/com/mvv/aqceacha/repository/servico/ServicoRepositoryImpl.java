@@ -33,14 +33,12 @@ public class ServicoRepositoryImpl implements ServicoRepositoryQuery {
         criteria.select(builder.construct(ServicoDto.class,
                 root.get("idserv"),
                 root.get("nomeserv"),
-                root.get("ramoAtv").get("ramo"),
                 root.get("precovenda")
         ));
 
         Predicate[] predicates = criarRestricoes(servicoFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeserv")));
-        criteria.orderBy(builder.asc(root.get("ramoAtv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("precovenda")));
 
         TypedQuery<ServicoDto> query = manager.createQuery(criteria);
@@ -57,7 +55,6 @@ public class ServicoRepositoryImpl implements ServicoRepositoryQuery {
         Predicate[] predicates = criarRestricoes(servicoFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeserv")));
-        criteria.orderBy(builder.asc(root.get("ramoAtv").get("ramo")));
         criteria.orderBy(builder.asc(root.get("precovenda")));
 
         criteria.select(builder.count(root));
@@ -83,10 +80,6 @@ public class ServicoRepositoryImpl implements ServicoRepositoryQuery {
         if (!StringUtils.isEmpty(servicoFilter.getNomeserv())){
             predicates.add(builder.like(builder.lower(root.get("nomeserv")),
                     "%" + servicoFilter.getNomeserv().toLowerCase() + "%" ));
-        }
-        if (!StringUtils.isEmpty(servicoFilter.getRamo())){
-            predicates.add(builder.like(builder.lower(root.get("ramoAtv").get("ramo")),
-                    "%" + servicoFilter.getRamo().toLowerCase() + "%" ));
         }
         if (servicoFilter.getPrecovenda() != null){
             predicates.add(builder.lessThanOrEqualTo(root.get("precovenda"),

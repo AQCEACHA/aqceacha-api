@@ -12,9 +12,6 @@ alter table vendedor add constraint fk_vendedor_cidade foreign key(idcidade) ref
 
 alter table vendedor add constraint fk_vendedor_ramo foreign key(idramo) references ramoatv(idramo);
 
--- Serviço
-
-alter table servico add constraint fk_servico_ramo foreign key(idramo) references ramoatv(idramo);
 
 -- Serviço Vendedor
 
@@ -65,35 +62,35 @@ insert into ramoatv values (0, 'Dentista', 'pen-tool');
 
 -- 1 a 4 Rove
 
-insert into servico values (0, 'Criação de logotipos', 2500.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0', 7);
+insert into servico values (0, 'Criação de logotipos', 2500.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Criação de peças publicitárias', 5000.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0', 7);
+insert into servico values (0, 'Criação de peças publicitárias', 5000.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Criação de websites', 25000.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0', 7);
+insert into servico values (0, 'Criação de websites', 25000.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Design editorial', 25000.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0', 7);
+insert into servico values (0, 'Design editorial', 25000.00, 'https://lh3.googleusercontent.com/pw/ADCreHdQTICkDwCaPd8TOvZGTPUa4SNIw4UA_tG-CNtfhiy3LFuewYhUJEZqx7T6IMlKghDWWejapThoxtN5UHxY5Kld1IyLbvggPGvk9WyJGVMcLMzUMqZG-IAoXcbku9kzXgkA17AInxrZxvhNzfKTfiSI=w657-h343-s-no-gm?authuser=0');
 
 -- 5 a 7 Pepe
 
-insert into servico values (0, 'Limpeza interna e externa do pc', 100.00, 'https://lh3.googleusercontent.com/pw/ADCreHeLXNQ1ORCX0EWDCrYbzGj_K4NmxttBbKwVNDpLQD_NHWqFCNxZIlfeZUCeYq6-EWOjb_PmNEDNcHTFuKGzfJv4lsGxl1OwankgoHjKGWdCuoQW6S8gFTaxy2SWESCZ1SdLz7Gm-eh_iz4KrYHjmt3S=w602-h326-s-no-gm?authuser=0', 2);
+insert into servico values (0, 'Limpeza interna e externa do pc', 100.00, 'https://lh3.googleusercontent.com/pw/ADCreHeLXNQ1ORCX0EWDCrYbzGj_K4NmxttBbKwVNDpLQD_NHWqFCNxZIlfeZUCeYq6-EWOjb_PmNEDNcHTFuKGzfJv4lsGxl1OwankgoHjKGWdCuoQW6S8gFTaxy2SWESCZ1SdLz7Gm-eh_iz4KrYHjmt3S=w602-h326-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Backup de dados', 100.00, 'https://lh3.googleusercontent.com/pw/ADCreHeLXNQ1ORCX0EWDCrYbzGj_K4NmxttBbKwVNDpLQD_NHWqFCNxZIlfeZUCeYq6-EWOjb_PmNEDNcHTFuKGzfJv4lsGxl1OwankgoHjKGWdCuoQW6S8gFTaxy2SWESCZ1SdLz7Gm-eh_iz4KrYHjmt3S=w602-h326-s-no-gm?authuser=0', 2);
+insert into servico values (0, 'Backup de dados', 100.00, 'https://lh3.googleusercontent.com/pw/ADCreHeLXNQ1ORCX0EWDCrYbzGj_K4NmxttBbKwVNDpLQD_NHWqFCNxZIlfeZUCeYq6-EWOjb_PmNEDNcHTFuKGzfJv4lsGxl1OwankgoHjKGWdCuoQW6S8gFTaxy2SWESCZ1SdLz7Gm-eh_iz4KrYHjmt3S=w602-h326-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Reparação de danos físicos', 300.00, 'https://lh3.googleusercontent.com/pw/ADCreHeLXNQ1ORCX0EWDCrYbzGj_K4NmxttBbKwVNDpLQD_NHWqFCNxZIlfeZUCeYq6-EWOjb_PmNEDNcHTFuKGzfJv4lsGxl1OwankgoHjKGWdCuoQW6S8gFTaxy2SWESCZ1SdLz7Gm-eh_iz4KrYHjmt3S=w602-h326-s-no-gm?authuser=0', 2);
+insert into servico values (0, 'Reparação de danos físicos', 300.00, 'https://lh3.googleusercontent.com/pw/ADCreHeLXNQ1ORCX0EWDCrYbzGj_K4NmxttBbKwVNDpLQD_NHWqFCNxZIlfeZUCeYq6-EWOjb_PmNEDNcHTFuKGzfJv4lsGxl1OwankgoHjKGWdCuoQW6S8gFTaxy2SWESCZ1SdLz7Gm-eh_iz4KrYHjmt3S=w602-h326-s-no-gm?authuser=0');
 
 -- 8 a 10 Fabi
 
-insert into servico values (0, 'Clínica geral', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0', 8);
+insert into servico values (0, 'Clínica geral', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Cirurgia', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0', 8);
+insert into servico values (0, 'Cirurgia', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Ortodontia', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0', 8);
+insert into servico values (0, 'Ortodontia', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0');
 
 -- 11 e 12 Victor
 
-insert into servico values (0, 'Ensaio de fotos', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHeUoGNTkKqC2Z4YPxyDuUPuHmVkBIHkYfLgyzdBhx_2VwOmlvZ2TAi80mfUQ4hZVhI6nDIGqRE2EaRyXrICARYat32PwjBvTeMeps0uFdRKMn9gj4sovAZyaoh5n8wYWYfyY_pX9oQ_iBS70zcfOrPY=w669-h400-s-no-gm?authuser=0', 1);
+insert into servico values (0, 'Ensaio de fotos', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHeUoGNTkKqC2Z4YPxyDuUPuHmVkBIHkYfLgyzdBhx_2VwOmlvZ2TAi80mfUQ4hZVhI6nDIGqRE2EaRyXrICARYat32PwjBvTeMeps0uFdRKMn9gj4sovAZyaoh5n8wYWYfyY_pX9oQ_iBS70zcfOrPY=w669-h400-s-no-gm?authuser=0');
 
-insert into servico values (0, 'Gravação de vídeo', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcjUleeBg9U3Ulf57vxEU2uUgXGoEH1RjGP6wtkkk94X7K7EbdyvCslxznH3VdN7xLMxx5eSqaBY0ckCXzAYhn9wGcQEW-sEsOYDBrk2Qz5ccF5WKo43diFF9kJGoD4A9TfHpasJIEpw6ddijvPKAAw=w646-h440-s-no-gm?authuser=0', 1);
+insert into servico values (0, 'Gravação de vídeo', 00.00, 'https://lh3.googleusercontent.com/pw/ADCreHcjUleeBg9U3Ulf57vxEU2uUgXGoEH1RjGP6wtkkk94X7K7EbdyvCslxznH3VdN7xLMxx5eSqaBY0ckCXzAYhn9wGcQEW-sEsOYDBrk2Qz5ccF5WKo43diFF9kJGoD4A9TfHpasJIEpw6ddijvPKAAw=w646-h440-s-no-gm?authuser=0');
 
 
 
@@ -101,13 +98,13 @@ insert into servico values (0, 'Gravação de vídeo', 00.00, 'https://lh3.googl
 
 -- Vendedor
 
-insert into vendedor values (0, 'Mari Rove', 'https://lh3.googleusercontent.com/pw/ADCreHeWc1xZnZoF56eLeHtXyyzQSnaFx1vhKEvY2xLxj6BuBv7EgtPYKpfK5WiWI2746jMenksIoouc0WN-UQ1Me3wX2bVY40oyhdMj2NqfXBw9KJH25SDKsTLuC03wOtYpmKxp_CFCt1xJqPfzSQwkPdfT=w727-h458-s-no-gm?authuser=0', null, 'marirove@email.com', '1111', 'Roves Designer', '2005-12-21', '(14)988103938', 'R. bebebe', '61', null, 'doc', 'cnpj', 5, 1050, 7);
+insert into vendedor values (0, 'Mari Rove', 'https://lh3.googleusercontent.com/pw/ADCreHeWc1xZnZoF56eLeHtXyyzQSnaFx1vhKEvY2xLxj6BuBv7EgtPYKpfK5WiWI2746jMenksIoouc0WN-UQ1Me3wX2bVY40oyhdMj2NqfXBw9KJH25SDKsTLuC03wOtYpmKxp_CFCt1xJqPfzSQwkPdfT=w727-h458-s-no-gm?authuser=0', null, 'marirove@email.com', '1111', 'Roves Designer', '2005-12-21', '(14)988103938', 'R. bebebe', '61', null, 'doc', 'cnpj', 5, 5010, 7);
 
-insert into vendedor values (0, 'Pedro Henrique Ribeiro', 'https://lh3.googleusercontent.com/pw/ADCreHeXEeIWLlOf0U_NEziBMl003ibkBnZJSITfc34-NGTcZxtqkjFZNx4tVJCbAjKOPG-T4ofx-FMN3Cwcb9JhT3am6m4T4Rar_9SRIzLxXuzWZiNbhckYWdeyOf1wTX025h_g6HLuaPZ39tib8fU9XtSg=w484-h498-s-no-gm?authuser=0', null, 'pepe@email.com', '2121', 'Pepe Manutenções', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 1050, 2);
+insert into vendedor values (0, 'Pedro Henrique Ribeiro', 'https://lh3.googleusercontent.com/pw/ADCreHeXEeIWLlOf0U_NEziBMl003ibkBnZJSITfc34-NGTcZxtqkjFZNx4tVJCbAjKOPG-T4ofx-FMN3Cwcb9JhT3am6m4T4Rar_9SRIzLxXuzWZiNbhckYWdeyOf1wTX025h_g6HLuaPZ39tib8fU9XtSg=w484-h498-s-no-gm?authuser=0', null, 'pepe@email.com', '2121', 'Pepe Manutenções', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4, 5010, 2);
 
-insert into vendedor values (0, 'Fabiana Chiquito', 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0', null, 'fabiana@email.com', '2121', 'Dentista Fabiana', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4.5, 1050, 8);
+insert into vendedor values (0, 'Fabiana Chiquito', 'https://lh3.googleusercontent.com/pw/ADCreHcpt7H55JGgS2J3_Bgw9jtgQuV-rs5-weY63737sq9k-RXuetZAFwoBL5Yn_E5YmrgbfDueYaR8kbxzsDdupmcls1sIhzw7jcSO435VpkEwTZ4zSSZqEmeb8-4SR54AxtKepcfSFNC1lAU6L-kjWGUN=w1065-h939-s-no-gm?authuser=0', null, 'fabiana@email.com', '2121', 'Dentista Fabiana', '2005-09-18', '(14)99050198', 'R. mememe', '71', '21', 'doc', 'cnpj', 4.5, 5010, 8);
 
-insert into vendedor values (0, 'Victor Carbelotti', 'https://lh3.googleusercontent.com/pw/ADCreHdj93n7VM1rK-s_-VvdAMVhM-m4ke0DLGiMIdUFtidOu1T6vMdb1r94fVwOOCjsTPEXZa7Ge8tax9IbTUZke4b2vZ6AiKGI_fKFBhcL1TyjYJrvqxm2DqcqhH24TczJBP8Y9AjhStSYjzCLGMDcI1uJ=w459-h496-s-no-gm?authuser=0', null, 'victor@email.com', '1234', 'Cameraman', '2005-06-03', '(14)998040306', 'R. mememe', '71', null, 'doc', 'cnpj', 5, 1050, 1);
+insert into vendedor values (0, 'Victor Carbelotti', 'https://lh3.googleusercontent.com/pw/ADCreHdj93n7VM1rK-s_-VvdAMVhM-m4ke0DLGiMIdUFtidOu1T6vMdb1r94fVwOOCjsTPEXZa7Ge8tax9IbTUZke4b2vZ6AiKGI_fKFBhcL1TyjYJrvqxm2DqcqhH24TczJBP8Y9AjhStSYjzCLGMDcI1uJ=w459-h496-s-no-gm?authuser=0', null, 'victor@email.com', '1234', 'Cameraman', '2005-06-03', '(14)998040306', 'R. mememe', '71', null, 'doc', 'cnpj', 5, 5010, 1);
 
 
 -- Clientes

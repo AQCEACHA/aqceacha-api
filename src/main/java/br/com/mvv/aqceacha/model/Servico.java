@@ -23,13 +23,10 @@ public class Servico {
 
     private String imgserv;
 
-
+  @JsonIgnore
   @OneToMany(mappedBy = "servico")
   private List<ServicoVendedor> servicovendedor = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "idramo")
-    private RamoAtv ramoAtv;
 
     public long getIdserv() {
         return idserv;
@@ -55,14 +52,6 @@ public class Servico {
         this.imgserv = imgserv;
     }
 
-    public RamoAtv getRamoAtv() {
-        return ramoAtv;
-    }
-
-    public void setRamoAtv(RamoAtv ramoAtv) {
-        this.ramoAtv = ramoAtv;
-    }
-
     public String getNomeserv() {
         return nomeserv;
     }
@@ -78,6 +67,8 @@ public class Servico {
   public void setServicovendedor(List<ServicoVendedor> servicovendedor) {
     this.servicovendedor = servicovendedor;
   }
+
+
 
   @Override
     public boolean equals(Object o) {

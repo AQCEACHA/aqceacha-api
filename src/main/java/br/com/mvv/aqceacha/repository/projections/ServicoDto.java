@@ -6,14 +6,12 @@ public class ServicoDto {
 
     private String nomeserv;
 
-    private String ramo;
 
     private Double precovenda;
 
-    public ServicoDto(Long idserv, String nomeserv, String ramo, Double precovenda) {
+    public ServicoDto(Long idserv, String nomeserv, Double precovenda) {
         this.idserv = idserv;
         this.nomeserv = nomeserv;
-        this.ramo = ramo;
         this.precovenda = precovenda;
     }
 
@@ -31,14 +29,6 @@ public class ServicoDto {
 
   public void setNomeserv(String nomeserv) {
     this.nomeserv = nomeserv;
-  }
-
-  public String getRamo() {
-    return ramo;
-  }
-
-  public void setRamo(String ramo) {
-    this.ramo = ramo;
   }
 
   public Double getPrecovenda() {

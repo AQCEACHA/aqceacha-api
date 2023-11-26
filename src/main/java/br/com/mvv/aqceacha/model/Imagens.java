@@ -1,5 +1,7 @@
 package br.com.mvv.aqceacha.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Imagens {
 
   private String img;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "imagens")
   private List<ImagensVendedor> imagensVendedor = new ArrayList<>();
 
@@ -43,6 +46,8 @@ public class Imagens {
   public void setImagensVendedor(List<ImagensVendedor> imagensVendedor) {
     this.imagensVendedor = imagensVendedor;
   }
+
+
 
   @Override
   public boolean equals(Object o) {

@@ -34,22 +34,25 @@ public class Vendedor {
     private String cnpj;
     private Double star;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idcidade")
     private Cidade cidade;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idramo")
     private RamoAtv ramoatv;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
     private List<ServicoVendedor> servicovendedor = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
     private List<ImagensVendedor> imagensvendedor = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
     private List<Favorito> favorito = new ArrayList<>();
 
@@ -204,6 +207,30 @@ public class Vendedor {
 
     public void setImagensVendedor(List<ImagensVendedor> imagensvendedor) {
         this.imagensvendedor = imagensvendedor;
+    }
+
+    public List<ServicoVendedor> getServicovendedor() {
+        return servicovendedor;
+    }
+
+    public void setServicovendedor(List<ServicoVendedor> servicovendedor) {
+        this.servicovendedor = servicovendedor;
+    }
+
+    public List<ImagensVendedor> getImagensvendedor() {
+        return imagensvendedor;
+    }
+
+    public void setImagensvendedor(List<ImagensVendedor> imagensvendedor) {
+        this.imagensvendedor = imagensvendedor;
+    }
+
+    public List<Favorito> getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(List<Favorito> favorito) {
+        this.favorito = favorito;
     }
 
     @Override

@@ -22,7 +22,7 @@ public class Cidade {
 
     @JsonIgnore
     @OneToMany(mappedBy = "cidade")
-    private List<Cidade> cidade = new ArrayList<>();
+    private List<Vendedor> vendedor = new ArrayList<>();
 
     public long getIdcidade() {
         return idcidade;
@@ -40,12 +40,13 @@ public class Cidade {
         this.nomecidade = nomecidade;
     }
 
-    public List<Cidade> getCidade() {
-        return cidade;
+
+    public List<Vendedor> getVendedor() {
+        return vendedor;
     }
 
-    public void setCidade(List<Cidade> cidade) {
-        this.cidade = cidade;
+    public void setVendedor(List<Vendedor> vendedor) {
+        this.vendedor = vendedor;
     }
 
     public String getUf() {
@@ -55,6 +56,8 @@ public class Cidade {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

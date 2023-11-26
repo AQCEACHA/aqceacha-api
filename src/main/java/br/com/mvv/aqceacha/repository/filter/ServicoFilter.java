@@ -4,8 +4,6 @@ public class ServicoFilter {
 
     private String nomeserv;
 
-    private String ramo;
-
     private Double precovenda;
 
     public String getNomeserv() {
@@ -14,14 +12,6 @@ public class ServicoFilter {
 
     public void setNomeserv(String nomeserv) {
         this.nomeserv = nomeserv;
-    }
-
-    public String getRamo() {
-        return ramo;
-    }
-
-    public void setRamo(String ramo) {
-        this.ramo = ramo;
     }
 
     public Double getPrecovenda() {

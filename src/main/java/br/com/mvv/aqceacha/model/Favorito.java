@@ -1,5 +1,7 @@
 package br.com.mvv.aqceacha.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -16,10 +18,12 @@ public class Favorito {
     @GeneratedValue(strategy = IDENTITY)
     private long idfav;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idven")
     private Vendedor vendedor;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "favorito")
     private List<FavoritoCliente> favoritoCliente = new ArrayList<>();
 
@@ -46,6 +50,8 @@ public class Favorito {
     public void setFavoritoCliente(List<FavoritoCliente> favoritoCliente) {
         this.favoritoCliente = favoritoCliente;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
