@@ -168,6 +168,7 @@ public class VendedorResource {
     vendedor.setComplementoven(vendedorRegistroDto.getComplementoven());
     vendedor.setCnpj(vendedorRegistroDto.getCnpj());
     vendedor.setDocumentoven(vendedorRegistroDto.getDocumentoven());
+    vendedor.setImgven(vendedorRegistroDto.getImgven());
 
     vendedor.setCidade(cidade);
     vendedor.setRamoatv(ramoAtv);

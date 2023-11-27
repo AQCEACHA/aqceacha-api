@@ -6,6 +6,16 @@ public class VendedorRegistroDto {
 
     private String nomeven;
 
+    private String imgven;
+
+    public String getImgven() {
+        return imgven;
+    }
+
+    public void setImgven(String imgven) {
+        this.imgven = imgven;
+    }
+
     private String emailven;
 
     private String senhaven;
